@@ -10,10 +10,18 @@ custom:
   defaultStage: dev
   defaultRegion: eu-central-1
 
+package:
+  exclude:
+    - '**'
+
+  include:
+    - package.json
+    - build/**
+
 functions:
   analytics:
     description: 'A weekly digest of useful analytics from Google and Mailchimp'
-    handler: services/analytics.send
+    handler: build/analytics/main.send
     events:
       - schedule:
         name: weekly
