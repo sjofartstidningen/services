@@ -10,7 +10,9 @@ async function run() {
     const projects = await readdir(join(__dirname, '../services'));
     await Promise.all(
       projects.map(project =>
-        execa('cross-env', [`PROJECT=${project}`, 'backpack', 'build']),
+        execa('cross-env', [`PROJECT=${project}`, 'backpack', 'build'], {
+          stdio: 'inherit',
+        }),
       ),
     );
   } catch (error) {
