@@ -1,0 +1,22 @@
+service: sst-services
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: ${opt:region, self:custom.defaultRegion}
+
+custom:
+  defaultStage: dev
+  defaultRegion: eu-central-1
+
+functions:
+  analytics:
+    description: 'A weekly digest of useful analytics from Google and Mailchimp'
+    handler: services/analytics.send
+    events:
+      - schedule:
+        name: weekly
+        description: 'Every monday at 6 am (UTC)'
+        rate: cron(0 6 * * MON *)
+        enabled: true

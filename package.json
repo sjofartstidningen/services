@@ -1,0 +1,20 @@
+{
+  "name": "services",
+  "version": "0.0.0",
+  "description": "A set of serverless services for Sjöfartstidningen",
+  "main": "index.js",
+  "repository": "https://github.com/sjofartstidningen/services.git",
+  "author": "Adam Bergman <adam@fransvilhelm.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "deploy": "serverless deploy",
+    "package": "serverless package"
+  },
+  "dependencies": {
+    "esm": "^3.0.84"
+  },
+  "devDependencies": {
+    "serverless": "^1.35.1"
+  }
+}
