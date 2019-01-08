@@ -1,5 +1,5 @@
-async function send(event, context, callback) {
-  callback(null, 'success');
-}
+/* eslint-disable no-native-reassign, strict */
+'use strict';
 
-export { send };
+require = require('esm')(module);
+module.exports = require('./handler');

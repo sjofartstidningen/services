@@ -1,4 +1,4 @@
-service: sst-services
+service: sjofartstidningen-services
 
 provider:
   name: aws
@@ -12,16 +12,12 @@ custom:
 
 package:
   exclude:
-    - '**'
-
-  include:
-    - package.json
-    - build/**
+    - '**/__tests__/**'
 
 functions:
   analytics:
     description: 'A weekly digest of useful analytics from Google and Mailchimp'
-    handler: build/analytics/main.send
+    handler: services/analytics.send
     events:
       - schedule:
         name: weekly
