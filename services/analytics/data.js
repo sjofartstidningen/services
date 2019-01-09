@@ -56,6 +56,15 @@ async function collectMailchimpData({ start, end }) {
   }
 }
 
+async function collectGoogleData({ start, end }) {
+  return {
+    week: {},
+    month: {},
+    articles: [],
+    jobs: [],
+  };
+}
+
 async function collect() {
   const today = new Date();
   const lastWeek = dateFns.subWeeks(today, 1);
@@ -65,15 +74,19 @@ async function collect() {
     end: dateFns.endOfWeek(lastWeek, { weekStartsOn: 1 }),
   };
 
-  const [mailchimp] = await Promise.all([collectMailchimpData(period)]);
+  const [mailchimp, google] = await Promise.all([
+    collectMailchimpData(period),
+    collectGoogleData(period),
+  ]);
 
   return {
     date: {
-      week: dateFns.format(period.end, 'W', { locale }),
+      week: dateFns.format(period.start, 'W', { locale }),
       year: dateFns.format(period.end, 'YYYY', { locale }),
       start: dateFns.format(period.start, 'D MMMM', { locale }),
       end: dateFns.format(period.end, 'D MMMM', { locale }),
     },
+    google,
     mailchimp,
   };
 }
