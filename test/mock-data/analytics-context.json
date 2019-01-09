@@ -1,0 +1,131 @@
+{
+  "date": {
+    "week": "2",
+    "year": "2019",
+    "start": "7 januari",
+    "end": "13 januari"
+  },
+  "ga": {
+    "week": {
+      "visitors": { "total": 11406, "diff": -0.016 },
+      "unique": { "total": 6508, "diff": 0.061 },
+      "pageviews": { "total": 22625, "diff": 0.061 }
+    },
+    "month": {
+      "visitors": { "total": 815156, "diff": -0.073 },
+      "unique": { "total": 233044, "diff": -0.118 },
+      "pageviews": { "total": 1597101, "diff": -0.085 }
+    },
+    "articles": [
+      {
+        "title": "Ovanlig lossning i Södertälje",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 1092
+      },
+      {
+        "title": "Hedersamt miljöuppdrag till Terntank",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 808
+      },
+      {
+        "title": "Färjelinjerna lyfter Stena AB",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 638
+      },
+      {
+        "title": "Tre av sex till Finnlines",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 605
+      },
+      {
+        "title": "Visbys nya kryssningskaj är invigd",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 506
+      }
+    ],
+    "jobs": [
+      {
+        "title": "Fartygsoperatör",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 105
+      },
+      {
+        "title": "Master of Mates STCW II/3",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 81
+      },
+      {
+        "title": "Trafikansvarig – Port Traffic Gothenburg",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 61
+      },
+      {
+        "title": "Chef Affärssegment Sjöfart",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 32
+      },
+      {
+        "title": "Sektionschef",
+        "url": "https://www.sjofartstidningen.se",
+        "views": 21
+      }
+    ]
+  },
+  "mc": {
+    "issues": [
+      {
+        "name": "Sjöfartstidningens nyhetsbrev 171031",
+        "title": "Nytt tillskott till Donsöflottan",
+        "stats": {
+          "recipients": 9648,
+          "openRate": 0.365,
+          "clickRate": 0.129
+        },
+        "articles": [
+          {
+            "url": "https://www.sjofartstidningen.se/det-var-ratt-tillfalle",
+            "clicks": 845
+          },
+          {
+            "url": "https://www.sjofartstidningen.se/cldns-celine-levererad",
+            "clicks": 409
+          },
+          {
+            "url": "https://www.sjofartstidningen.se/parter-kvar-skyttegravarna",
+            "clicks": 165
+          },
+          { "url": "https://www.sjofartstidningen.se/?p=63011", "clicks": 114 },
+          { "url": "https://www.sjofartstidningen.se/?p=62994", "clicks": 50 }
+        ]
+      },
+      {
+        "name": "Sjöfartstidningens nyhetsbrev 171102",
+        "title": "Läs vårt extranummer om avgiftshöjningarna!",
+        "stats": {
+          "recipients": 9629,
+          "openRate": 0.317,
+          "clickRate": 0.101
+        },
+        "articles": [
+          {
+            "url": "https://www.sjofartstidningen.se/las-vart-extranummer-om-avgifterna",
+            "clicks": 359
+          },
+          {
+            "url": "https://www.sjofartstidningen.se/fortsatt-svagt-goteborgs-container",
+            "clicks": 134
+          },
+          {
+            "url": "https://www.sjofartstidningen.se/lng-terminal-byggs-oxelosund",
+            "clicks": 134
+          },
+          { "url": "https://www.sjofartstidningen.se/?p=63049", "clicks": 85 },
+          {
+            "url": "https://www.sjofartstidningen.se/saab-kockums-vaxer-karlskrona",
+            "clicks": 56
+          }
+        ]
+      }
+    ]
+  }
+}
