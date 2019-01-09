@@ -176,7 +176,7 @@
       </mj-column>
     </mj-section>
 
-    {{#if mc}}{{else}}
+    {{#if mailchimp}}{{else}}
       <mj-section>
         <mj-column>
           <mj-text font-size="16px" line-height="24px" color="#9c9e9f">
@@ -186,12 +186,12 @@
       </mj-section>
     {{/if}}
 
-    {{#with mc}}
+    {{#with mailchimp}}
       <mj-section padding-top="0px">
-        {{#each this.issues}}
+        {{#each this.campaigns}}
           <mj-column padding-bottom="20px">
-            <mj-text font-size="16px" line-height="19.2px" padding-bottom="0">{{name}}</mj-text>
-            <mj-text font-size="12px" padding-bottom="0" color="#9c9e9f">{{title}}</mj-text>
+            <mj-text font-size="16px" line-height="19.2px" padding-bottom="0">{{title}}</mj-text>
+            <mj-text font-size="12px" padding-bottom="0" color="#9c9e9f">{{subject}}</mj-text>
 
             {{#with stats}}
               <mj-table>
