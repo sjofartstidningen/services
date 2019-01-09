@@ -23,4 +23,6 @@ async function construct(data) {
   return html;
 }
 
-export { construct };
+async function send() {}
+
+export { construct, send };
