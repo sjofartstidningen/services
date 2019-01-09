@@ -71,11 +71,11 @@
       }
     ]
   },
-  "mc": {
-    "issues": [
+  "mailchimp": {
+    "campaigns": [
       {
-        "name": "Sjöfartstidningens nyhetsbrev 171031",
-        "title": "Nytt tillskott till Donsöflottan",
+        "title": "Sjöfartstidningens nyhetsbrev 171031",
+        "subject": "Nytt tillskott till Donsöflottan",
         "stats": {
           "recipients": 9648,
           "openRate": 0.365,
@@ -99,8 +99,8 @@
         ]
       },
       {
-        "name": "Sjöfartstidningens nyhetsbrev 171102",
-        "title": "Läs vårt extranummer om avgiftshöjningarna!",
+        "title": "Sjöfartstidningens nyhetsbrev 171102",
+        "subject": "Läs vårt extranummer om avgiftshöjningarna!",
         "stats": {
           "recipients": 9629,
           "openRate": 0.317,
