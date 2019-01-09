@@ -1,5 +1,8 @@
-/* eslint-disable no-native-reassign, strict */
-'use strict';
+import * as email from './email';
 
-require = require('esm')(module);
-module.exports = require('./handler');
+async function send(event, context, callback) {
+  const html = await email.construct(context);
+  callback(null, html);
+}
+
+export { send };
