@@ -10,7 +10,7 @@ const mailchimpBaseConfig = {
   },
 };
 
-async function getMailchimpData({ start, end }) {
+async function collectMailchimpData({ start, end }) {
   try {
     const { data } = await axios.get('/campaigns', {
       ...mailchimpBaseConfig,
@@ -56,7 +56,7 @@ async function getMailchimpData({ start, end }) {
   }
 }
 
-async function getData() {
+async function collect() {
   const today = new Date();
   const lastWeek = dateFns.subWeeks(today, 1);
 
@@ -65,7 +65,7 @@ async function getData() {
     end: dateFns.endOfWeek(lastWeek, { weekStartsOn: 1 }),
   };
 
-  const [mailchimp] = await Promise.all([getMailchimpData(period)]);
+  const [mailchimp] = await Promise.all([collectMailchimpData(period)]);
 
   return {
     date: {
@@ -78,4 +78,4 @@ async function getData() {
   };
 }
 
-export { getData };
+export { collect };
