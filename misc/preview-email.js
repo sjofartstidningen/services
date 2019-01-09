@@ -4,13 +4,13 @@
 require = require('esm')(module);
 require('dotenv').config();
 const http = require('http');
-const { getData } = require('../services/analytics/data');
-const { construct } = require('../services/analytics/email');
+const Data = require('../services/analytics/data');
+const Email = require('../services/analytics/email');
 
 const server = http.createServer(async (request, response) => {
   try {
-    const data = await getData();
-    const html = await construct(data);
+    const data = await Data.collect();
+    const html = await Email.construct(data);
     response.end(html);
   } catch (err) {
     response.end(err.toString());

@@ -1,4 +1,4 @@
-import { getData } from '../data';
+import { collect } from '../data';
 import axiosMock from 'axios';
 
 jest.mock('axios');
@@ -7,9 +7,9 @@ beforeEach(() => {
   axiosMock.get.mockReset();
 });
 
-describe('Module: data.getData', () => {
+describe('Module: Data.collect', () => {
   it('should get data about the time period for this email', async () => {
-    const { date } = await getData();
+    const { date } = await collect();
 
     expect(Number.parseInt(date.week)).not.toBeNaN();
     expect(Number.parseInt(date.year)).not.toBeNaN();
@@ -26,7 +26,7 @@ describe('Module: data.getData', () => {
         data: require('../../../test/mock-data/mailchimp-click-report.json'),
       });
 
-    const { mailchimp } = await getData();
+    const { mailchimp } = await collect();
 
     expect(mailchimp.campaigns).toEqual(
       expect.arrayContaining([
