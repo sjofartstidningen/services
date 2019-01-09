@@ -9,6 +9,8 @@
   "private": true,
   "scripts": {
     "test": "jest --env=node",
+    "build": "rm -rf build && yarn build:analytics",
+    "build:analytics": "parcel build services/analytics/index.js -d build/analytics --target node",
     "deploy": "serverless deploy",
     "package": "serverless package",
     "invoke": "serverless invoke local"
@@ -36,6 +38,7 @@
     "husky": "^1.3.1",
     "jest": "^23.6.0",
     "lint-staged": "^8.1.0",
+    "parcel-bundler": "^1.11.0",
     "prettier": "^1.15.3",
     "serverless": "^1.35.1"
   },

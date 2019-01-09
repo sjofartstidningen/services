@@ -12,12 +12,21 @@ custom:
 
 package:
   exclude:
-    - '**/__tests__/**'
+    - '.cache/**'
+    - 'misc/**'
+    - 'services/**'
+    - 'test/**'
+    - 'utils/**'
+    - '*'
+    - '!package.json'
+    - '!build/**'
+    - '!static/**'
+    - '**/*.map'
 
 functions:
   analytics:
     description: 'A weekly digest of useful analytics from Google and Mailchimp'
-    handler: services/analytics.send
+    handler: build/analytics.send
     events:
       - schedule:
         name: weekly
