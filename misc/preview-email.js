@@ -2,13 +2,15 @@
 'use strict';
 
 require = require('esm')(module);
+require('dotenv').config();
 const http = require('http');
+const { getData } = require('../services/analytics/data');
 const { construct } = require('../services/analytics/email');
-const context = require('../test/mock-data/analytics-context.json');
 
 const server = http.createServer(async (request, response) => {
   try {
-    const html = await construct(context);
+    const data = await getData();
+    const html = await construct(data);
     response.end(html);
   } catch (err) {
     response.end(err.toString());
