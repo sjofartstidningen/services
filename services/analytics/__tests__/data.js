@@ -1,10 +1,13 @@
 import { collect } from '../data';
 import axiosMock from 'axios';
+import { analyticsReport as analyticsReportMock } from '../utils';
 
 jest.mock('axios');
+jest.mock('../utils.js');
 
 beforeEach(() => {
   axiosMock.get.mockReset();
+  analyticsReportMock.mockReset();
 });
 
 describe('Module: Data.collect', () => {
@@ -47,5 +50,42 @@ describe('Module: Data.collect', () => {
         }),
       ]),
     );
+  });
+
+  it('should collect data from google', async () => {
+    const visitsReport = require('../../../test/mock-data/google-visits-report.json');
+    const viewsReport = require('../../../test/mock-data/google-views-report.json');
+
+    analyticsReportMock
+      .mockResolvedValueOnce(visitsReport)
+      .mockResolvedValueOnce(visitsReport)
+      .mockResolvedValueOnce(viewsReport)
+      .mockResolvedValueOnce(viewsReport);
+
+    const { google } = await collect();
+
+    const visitsReportDataObject = expect.objectContaining({
+      total: expect.any(Number),
+      diff: expect.any(Number),
+    });
+
+    const visitsReportData = expect.objectContaining({
+      users: visitsReportDataObject,
+      sessions: visitsReportDataObject,
+      pageviews: visitsReportDataObject,
+    });
+
+    const viewsReportData = expect.arrayContaining([
+      expect.objectContaining({
+        title: expect.any(String),
+        url: expect.any(String),
+        views: expect.any(Number),
+      }),
+    ]);
+
+    expect(google.week).toEqual(visitsReportData);
+    expect(google.month).toEqual(visitsReportData);
+    expect(google.articles).toEqual(viewsReportData);
+    expect(google.jobs).toEqual(viewsReportData);
   });
 });
