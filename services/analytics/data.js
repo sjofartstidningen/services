@@ -11,49 +11,45 @@ const mailchimpBaseConfig = {
 };
 
 async function collectMailchimpData({ start, end }) {
-  try {
-    const { data } = await axios.get('/campaigns', {
-      ...mailchimpBaseConfig,
-      params: {
-        since_send_time: start,
-        before_send_time: end,
-        list_id: process.env.MAILCHIMP_LIST_ID,
-      },
-    });
+  const { data } = await axios.get('/campaigns', {
+    ...mailchimpBaseConfig,
+    params: {
+      since_send_time: start,
+      before_send_time: end,
+      list_id: process.env.MAILCHIMP_LIST_ID,
+    },
+  });
 
-    const campaigns = await Promise.all(
-      data.campaigns.map(async campaign => {
-        const { data: clickReport } = await axios.get(
-          `/reports/${campaign.id}/click-details`,
-          {
-            ...mailchimpBaseConfig,
-            params: { count: 50 },
-          },
-        );
+  const campaigns = await Promise.all(
+    data.campaigns.map(async campaign => {
+      const { data: clickReport } = await axios.get(
+        `/reports/${campaign.id}/click-details`,
+        {
+          ...mailchimpBaseConfig,
+          params: { count: 50 },
+        },
+      );
 
-        return {
-          title: campaign.settings.title,
-          subject: campaign.settings.subject_line,
-          stats: {
-            recipients: campaign.recipients.recipient_count,
-            openRate: campaign.report_summary.open_rate,
-            clickRate: campaign.report_summary.click_rate,
-          },
-          articles: clickReport.urls_clicked
-            .sort((a, b) => b.total_clicks - a.total_clicks)
-            .slice(0, 5)
-            .map(item => ({
-              url: item.url,
-              clicks: item.total_clicks,
-            })),
-        };
-      }),
-    );
+      return {
+        title: campaign.settings.title,
+        subject: campaign.settings.subject_line,
+        stats: {
+          recipients: campaign.recipients.recipient_count,
+          openRate: campaign.report_summary.open_rate,
+          clickRate: campaign.report_summary.click_rate,
+        },
+        articles: clickReport.urls_clicked
+          .sort((a, b) => b.total_clicks - a.total_clicks)
+          .slice(0, 5)
+          .map(item => ({
+            url: item.url,
+            clicks: item.total_clicks,
+          })),
+      };
+    }),
+  );
 
-    return { campaigns };
-  } catch (error) {
-    return null;
-  }
+  return { campaigns };
 }
 
 async function collectGoogleData({ start, end }) {
@@ -75,8 +71,8 @@ async function collect() {
   };
 
   const [mailchimp, google] = await Promise.all([
-    collectMailchimpData(period),
-    collectGoogleData(period),
+    collectMailchimpData(period).catch(() => null),
+    collectGoogleData(period).catch(() => null),
   ]);
 
   return {
