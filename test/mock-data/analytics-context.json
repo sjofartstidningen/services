@@ -1,128 +1,124 @@
 {
   "date": {
-    "week": "2",
+    "week": "1",
     "year": "2019",
-    "start": "7 januari",
-    "end": "13 januari"
+    "start": "31 december",
+    "end": "6 januari"
   },
-  "ga": {
+  "google": {
     "week": {
-      "sessions": { "total": 11406, "diff": -0.016 },
-      "users": { "total": 6508, "diff": 0.061 },
-      "pageviews": { "total": 22625, "diff": 0.061 }
+      "users": {
+        "total": 6792,
+        "diff": 0.10528885272579336
+      },
+      "sessions": {
+        "total": 11562,
+        "diff": 0.23591662212720466
+      },
+      "pageviews": {
+        "total": 22942,
+        "diff": 0.24333405592889656
+      }
     },
     "month": {
-      "sessions": { "total": 815156, "diff": -0.073 },
-      "users": { "total": 233044, "diff": -0.118 },
-      "pageviews": { "total": 1597101, "diff": -0.085 }
+      "users": {
+        "total": 25759,
+        "diff": -0.03737060428267125
+      },
+      "sessions": {
+        "total": 62325,
+        "diff": -0.09624140831182393
+      },
+      "pageviews": {
+        "total": 128667,
+        "diff": -0.0517437061494016
+      }
     },
     "articles": [
       {
-        "title": "Ovanlig lossning i Södertälje",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 1092
+        "title": "Rekordhög sjö och inställda turer",
+        "url": "https://www.sjofartstidningen.se/rekordhog-sjo-och-installda-turer/",
+        "views": 1368
       },
       {
-        "title": "Hedersamt miljöuppdrag till Terntank",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 808
+        "title": "KBV ser över bemanningen",
+        "url": "https://www.sjofartstidningen.se/kbv-ser-bemanningen/",
+        "views": 1044
       },
       {
-        "title": "Färjelinjerna lyfter Stena AB",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 638
+        "title": "Tyskt klartecken för tunnelbygge",
+        "url": "https://www.sjofartstidningen.se/tyskt-klartecken-tunnelbygge/",
+        "views": 772
       },
       {
-        "title": "Tre av sex till Finnlines",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 605
+        "title": "Ett svinaktigt 2019 stundar",
+        "url": "https://www.sjofartstidningen.se/bloggar/utkiks-bloggen/ett-svinaktigt-2019-stundar/",
+        "views": 513
       },
       {
-        "title": "Visbys nya kryssningskaj är invigd",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 506
+        "title": "Föreslår utökat isbrytarsamarbete",
+        "url": "https://www.sjofartstidningen.se/sjofartsverket-foreslar-utokat-isbrytarsamarbete/",
+        "views": 505
       }
     ],
     "jobs": [
       {
-        "title": "Fartygsoperatör",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 105
+        "title": "Fartygsingenjör",
+        "url": "https://www.sjofartstidningen.se/jobb/fartygsingenjor-3/",
+        "views": 104
       },
       {
-        "title": "Master of Mates STCW II/3",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 81
+        "title": "Befraktare samt två fartygsoperatörer",
+        "url": "https://www.sjofartstidningen.se/jobb/befraktare-samt-tva-fartygsoperatorer/",
+        "views": 101
       },
       {
-        "title": "Trafikansvarig – Port Traffic Gothenburg",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 61
+        "title": "Säljare/Affärsutvecklare",
+        "url": "https://www.sjofartstidningen.se/jobb/saljareaffarsutvecklare-2/",
+        "views": 85
       },
       {
-        "title": "Chef Affärssegment Sjöfart",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 32
+        "title": "Teknisk chef",
+        "url": "https://www.sjofartstidningen.se/jobb/teknisk-chef-8/",
+        "views": 85
       },
       {
-        "title": "Sektionschef",
-        "url": "https://www.sjofartstidningen.se",
-        "views": 21
+        "title": "Överstyrman till ”Astrea”",
+        "url": "https://www.sjofartstidningen.se/jobb/overstyrman-till-astrea/",
+        "views": 69
       }
     ]
   },
   "mailchimp": {
     "campaigns": [
       {
-        "title": "Sjöfartstidningens nyhetsbrev 171031",
-        "subject": "Nytt tillskott till Donsöflottan",
+        "title": "Sjöfartstidningens nyhetsbrev 190103",
+        "subject": "Föreslår utökat isbrytarsamarbete",
         "stats": {
-          "recipients": 9648,
-          "openRate": 0.365,
-          "clickRate": 0.129
+          "recipients": 8626,
+          "openRate": 0.35323498664189,
+          "clickRate": 0.13485886862586
         },
         "articles": [
           {
-            "url": "https://www.sjofartstidningen.se/det-var-ratt-tillfalle",
-            "clicks": 845
+            "url": "https://www.sjofartstidningen.se/bloggar/utkiks-bloggen/ett-svinaktigt-2019-stundar/?utm_source=Sj%C3%B6fartstidningens+nyhetsbrev&utm_campaign=9a9032bcce-EMAIL_CAMPAIGN_2019_01_03_03_08&utm_medium=email&utm_term=0_eaa9b84478-9a9032bcce-[LIST_EMAIL_ID]",
+            "clicks": 385
           },
           {
-            "url": "https://www.sjofartstidningen.se/cldns-celine-levererad",
-            "clicks": 409
+            "url": "https://www.sjofartstidningen.se/kbv-ser-bemanningen/?utm_source=Sj%C3%B6fartstidningens+nyhetsbrev&utm_campaign=9a9032bcce-EMAIL_CAMPAIGN_2019_01_03_03_08&utm_medium=email&utm_term=0_eaa9b84478-9a9032bcce-[LIST_EMAIL_ID]",
+            "clicks": 337
           },
           {
-            "url": "https://www.sjofartstidningen.se/parter-kvar-skyttegravarna",
-            "clicks": 165
-          },
-          { "url": "https://www.sjofartstidningen.se/?p=63011", "clicks": 114 },
-          { "url": "https://www.sjofartstidningen.se/?p=62994", "clicks": 50 }
-        ]
-      },
-      {
-        "title": "Sjöfartstidningens nyhetsbrev 171102",
-        "subject": "Läs vårt extranummer om avgiftshöjningarna!",
-        "stats": {
-          "recipients": 9629,
-          "openRate": 0.317,
-          "clickRate": 0.101
-        },
-        "articles": [
-          {
-            "url": "https://www.sjofartstidningen.se/las-vart-extranummer-om-avgifterna",
-            "clicks": 359
+            "url": "https://www.sjofartstidningen.se/rekordhog-sjo-och-installda-turer/?utm_source=Sj%C3%B6fartstidningens+nyhetsbrev&utm_campaign=9a9032bcce-EMAIL_CAMPAIGN_2019_01_03_03_08&utm_medium=email&utm_term=0_eaa9b84478-9a9032bcce-[LIST_EMAIL_ID]",
+            "clicks": 302
           },
           {
-            "url": "https://www.sjofartstidningen.se/fortsatt-svagt-goteborgs-container",
-            "clicks": 134
+            "url": "https://www.sjofartstidningen.se/sjofartsverket-foreslar-utokat-isbrytarsamarbete/?utm_source=Sj%C3%B6fartstidningens+nyhetsbrev&utm_campaign=9a9032bcce-EMAIL_CAMPAIGN_2019_01_03_03_08&utm_medium=email&utm_term=0_eaa9b84478-9a9032bcce-[LIST_EMAIL_ID]",
+            "clicks": 266
           },
           {
-            "url": "https://www.sjofartstidningen.se/lng-terminal-byggs-oxelosund",
-            "clicks": 134
-          },
-          { "url": "https://www.sjofartstidningen.se/?p=63049", "clicks": 85 },
-          {
-            "url": "https://www.sjofartstidningen.se/saab-kockums-vaxer-karlskrona",
-            "clicks": 56
+            "url": "https://www.sjofartstidningen.se/tyskt-klartecken-tunnelbygge/?utm_source=Sj%C3%B6fartstidningens+nyhetsbrev&utm_campaign=9a9032bcce-EMAIL_CAMPAIGN_2019_01_03_03_08&utm_medium=email&utm_term=0_eaa9b84478-9a9032bcce-[LIST_EMAIL_ID]",
+            "clicks": 262
           }
         ]
       }

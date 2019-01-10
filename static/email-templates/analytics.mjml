@@ -78,7 +78,7 @@
       </mj-section>
     {{/if}}
 
-    {{#with ga}}
+    {{#with google}}
       <mj-section padding-top="0px">
         {{#with this.week}}
           <mj-column>
