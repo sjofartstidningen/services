@@ -1,7 +1,5 @@
 <mjml>
   <mj-head>
-    <mj-preview>Statistik för webb och nyhetsbrev vecka {{ date.week }} – {{ date.year }}</mj-preview>
-
     <mj-attributes>
       <mj-text font-family="Helvetica, Ubuntu, sans-serif" />
     </mj-attributes>
