@@ -3,6 +3,7 @@ import fs from 'fs';
 import Handlebars from 'handlebars';
 import mjml from 'mjml';
 import { promisify } from 'util';
+import axios from 'axios';
 import * as helpers from '../../utils/handlebars-helpers';
 
 const readFile = promisify(fs.readFile);
@@ -23,6 +24,24 @@ async function construct(data) {
   return html;
 }
 
-async function send() {}
+async function send({ body, subject, recipients }) {
+  await axios.post(
+    'https://api.sendgrid.com/v3/mail/send',
+    {
+      personalizations: recipients.map(r => ({ to: [r] })),
+      from: {
+        email: 'info@sjofartstidningen.se',
+        name: 'Sjöfartstidningen - Statistik',
+      },
+      subject,
+      content: [{ type: 'text/html', value: body }],
+      categories: ['services', 'analytics'],
+      mail_settings: {
+        sandbox_mode: { enable: process.env.NODE_ENV !== 'production' },
+      },
+    },
+    { headers: { Authorization: `Bearer ${process.env.SENDGRID_API_KEY}` } },
+  );
+}
 
 export { construct, send };
