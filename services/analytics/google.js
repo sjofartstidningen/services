@@ -1,4 +1,4 @@
-import { analyticsReport } from './utils';
+import { analyticsReport } from './analytics-report';
 
 const extractVisitsData = (index, curr, prev) => ({
   total: Number.parseInt(curr.values[index], 10),

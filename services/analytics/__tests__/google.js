@@ -1,8 +1,8 @@
 import dateFns from 'date-fns';
 import * as Google from '../google';
-import { analyticsReport as analyticsReportMock } from '../utils';
+import { analyticsReport as analyticsReportMock } from '../analytics-report';
 
-jest.mock('../utils.js');
+jest.mock('../analytics-report.js');
 
 const format = date => dateFns.format(date, 'YYYY-MM-DD');
 const dateRange = [
