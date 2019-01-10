@@ -1,6 +1,6 @@
 import { getWidth } from './string-pixel-width';
 
-const percent = num => `${(num * 100).toLocaleString()}%`;
+const percent = num => `${(num * 100).toFixed(1)}%`;
 
 const formatNumber = num => num.toLocaleString();
 

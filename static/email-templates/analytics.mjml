@@ -68,7 +68,7 @@
       </mj-column>
     </mj-section>
 
-    {{#if ga}}{{else}}
+    {{#if google}}{{else}}
       <mj-section>
         <mj-column>
           <mj-text font-size="16px" line-height="24px" color="#9c9e9f">
@@ -89,17 +89,17 @@
               <tr>
                 <th class="thead">Besökare</th>
                 <td class="num">{{formatNumber sessions.total}}</td>
-                <td class="num" style="color: {{#gt sessions.diff 0}}green{{else}}red{{/gt}};">({{percent sessions.diff}})</td>
+                <td class="num" style="color: {{#gt sessions.diff 0}}green{{else}}red{{/gt}};">{{percent sessions.diff}}</td>
               </tr>
               <tr>
                 <th class="thead">Unika besökare</th>
                 <td class="num">{{formatNumber users.total}}</td>
-                <td class="num" style="color: {{#gt users.diff 0}}green{{else}}red{{/gt}};">({{percent users.diff}})</td>
+                <td class="num" style="color: {{#gt users.diff 0}}green{{else}}red{{/gt}};">{{percent users.diff}}</td>
               </tr>
               <tr>
                 <th class="thead">Sidvisningar</th>
                 <td class="num">{{formatNumber pageviews.total}}</td>
-                <td class="num" style="color: {{#gt pageviews.diff 0}}green{{else}}red{{/gt}};">({{percent pageviews.diff}})</td>
+                <td class="num" style="color: {{#gt pageviews.diff 0}}green{{else}}red{{/gt}};">{{percent pageviews.diff}}</td>
               </tr>
             </mj-table>
           </mj-column>
@@ -114,17 +114,17 @@
               <tr>
                 <th class="thead">Besökare</th>
                 <td class="num">{{formatNumber sessions.total}}</td>
-                <td class="num" style="color: {{#gt sessions.diff 0}}green{{else}}red{{/gt}};">({{percent sessions.diff}})</td>
+                <td class="num" style="color: {{#gt sessions.diff 0}}green{{else}}red{{/gt}};">{{percent sessions.diff}}</td>
               </tr>
               <tr>
                 <th class="thead">Unika besökare</th>
                 <td class="num">{{formatNumber users.total}}</td>
-                <td class="num" style="color: {{#gt users.diff 0}}green{{else}}red{{/gt}};">({{percent users.diff}})</td>
+                <td class="num" style="color: {{#gt users.diff 0}}green{{else}}red{{/gt}};">{{percent users.diff}}</td>
               </tr>
               <tr>
                 <th class="thead">Sidvisningar</th>
                 <td class="num">{{formatNumber pageviews.total}}</td>
-                <td class="num" style="color: {{#gt pageviews.diff 0}}green{{else}}red{{/gt}};">({{percent pageviews.diff}})</td>
+                <td class="num" style="color: {{#gt pageviews.diff 0}}green{{else}}red{{/gt}};">{{percent pageviews.diff}}</td>
               </tr>
             </mj-table>
           </mj-column>
