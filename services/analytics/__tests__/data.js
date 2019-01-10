@@ -1,9 +1,9 @@
 import { collect } from '../data';
 import axiosMock from 'axios';
-import { analyticsReport as analyticsReportMock } from '../utils';
+import { analyticsReport as analyticsReportMock } from '../analytics-report';
 
 jest.mock('axios');
-jest.mock('../utils.js');
+jest.mock('../analytics-report.js');
 
 beforeEach(() => {
   axiosMock.get.mockReset();
