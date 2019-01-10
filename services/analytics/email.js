@@ -29,10 +29,7 @@ async function send({ body, subject, recipients }) {
     'https://api.sendgrid.com/v3/mail/send',
     {
       personalizations: recipients.map(r => ({ to: [r] })),
-      from: {
-        email: 'info@sjofartstidningen.se',
-        name: 'Sjöfartstidningen - Statistik',
-      },
+      from: { email: process.env.SST_EMAIL, name: process.env.SST_NAME },
       subject,
       content: [{ type: 'text/html', value: body }],
       categories: ['services', 'analytics'],
