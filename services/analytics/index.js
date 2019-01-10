@@ -1,7 +1,8 @@
 import * as Data from './data';
 import * as Email from './email';
+import { preventMultipleInvokations } from '../../utils/prevent-multiple-invokations';
 
-async function send(event, context, callback) {
+async function sendHandler(event, context, callback) {
   try {
     const data = await Data.collect();
     const html = await Email.construct(data);
@@ -14,10 +15,16 @@ async function send(event, context, callback) {
       recipients: [], // TODO: Figure out how to add recipients
     });
 
-    callback(null, true);
+    return { success: true };
   } catch (error) {
-    callback(error);
+    throw error;
   }
 }
+
+const send = preventMultipleInvokations({
+  id: 'service-analytics',
+  evaluate: () => {},
+  create: () => {},
+})(sendHandler);
 
 export { send };
