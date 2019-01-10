@@ -48,32 +48,4 @@ describe('Module: Data.collect', () => {
       ]),
     );
   });
-
-  it.skip('should get analytics from Google Analytics', async () => {
-    const { google } = await collect();
-
-    const periodDataObject = expect.objectContaining({
-      total: expect.any(Number),
-      diff: expect.any(Number),
-    });
-
-    const periodObject = expect.objectContaining({
-      visitors: periodDataObject,
-      unique: periodDataObject,
-      pageviews: periodDataObject,
-    });
-
-    const linksArray = expect.arrayContaining([
-      expect.objectContaining({
-        title: expect.any(String),
-        url: expect.any(String),
-        views: expect.any(Number),
-      }),
-    ]);
-
-    expect(google.week).toEqual(periodObject);
-    expect(google.month).toEqual(periodObject);
-    expect(google.articles).toEqual(linksArray);
-    expect(google.jobs).toEqual(linksArray);
-  });
 });

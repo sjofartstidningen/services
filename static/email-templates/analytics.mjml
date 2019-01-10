@@ -88,13 +88,13 @@
             <mj-table>
               <tr>
                 <th class="thead">Besökare</th>
-                <td class="num">{{formatNumber visitors.total}}</td>
-                <td class="num" style="color: {{#gt visitors.diff 0}}green{{else}}red{{/gt}};">({{percent visitors.diff}})</td>
+                <td class="num">{{formatNumber sessions.total}}</td>
+                <td class="num" style="color: {{#gt sessions.diff 0}}green{{else}}red{{/gt}};">({{percent sessions.diff}})</td>
               </tr>
               <tr>
                 <th class="thead">Unika besökare</th>
-                <td class="num">{{formatNumber unique.total}}</td>
-                <td class="num" style="color: {{#gt unique.diff 0}}green{{else}}red{{/gt}};">({{percent unique.diff}})</td>
+                <td class="num">{{formatNumber users.total}}</td>
+                <td class="num" style="color: {{#gt users.diff 0}}green{{else}}red{{/gt}};">({{percent users.diff}})</td>
               </tr>
               <tr>
                 <th class="thead">Sidvisningar</th>
@@ -113,13 +113,13 @@
             <mj-table>
               <tr>
                 <th class="thead">Besökare</th>
-                <td class="num">{{formatNumber visitors.total}}</td>
-                <td class="num" style="color: {{#gt visitors.diff 0}}green{{else}}red{{/gt}};">({{percent visitors.diff}})</td>
+                <td class="num">{{formatNumber sessions.total}}</td>
+                <td class="num" style="color: {{#gt sessions.diff 0}}green{{else}}red{{/gt}};">({{percent sessions.diff}})</td>
               </tr>
               <tr>
                 <th class="thead">Unika besökare</th>
-                <td class="num">{{formatNumber unique.total}}</td>
-                <td class="num" style="color: {{#gt unique.diff 0}}green{{else}}red{{/gt}};">({{percent unique.diff}})</td>
+                <td class="num">{{formatNumber users.total}}</td>
+                <td class="num" style="color: {{#gt users.diff 0}}green{{else}}red{{/gt}};">({{percent users.diff}})</td>
               </tr>
               <tr>
                 <th class="thead">Sidvisningar</th>

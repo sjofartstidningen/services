@@ -7,13 +7,13 @@
   },
   "ga": {
     "week": {
-      "visitors": { "total": 11406, "diff": -0.016 },
-      "unique": { "total": 6508, "diff": 0.061 },
+      "sessions": { "total": 11406, "diff": -0.016 },
+      "users": { "total": 6508, "diff": 0.061 },
       "pageviews": { "total": 22625, "diff": 0.061 }
     },
     "month": {
-      "visitors": { "total": 815156, "diff": -0.073 },
-      "unique": { "total": 233044, "diff": -0.118 },
+      "sessions": { "total": 815156, "diff": -0.073 },
+      "users": { "total": 233044, "diff": -0.118 },
       "pageviews": { "total": 1597101, "diff": -0.085 }
     },
     "articles": [
