@@ -22,7 +22,7 @@ function preventMultipleInvokations({
   create,
   onPrevented = () => ({ prevented: true }),
 }) {
-  return handler => async (event, context) => {
+  return handler => async (event, context, callback) => {
     // Get the set value from the database
     const existingItem = await getItem(id).catch(() => null);
 
@@ -31,18 +31,18 @@ function preventMultipleInvokations({
     if (existingItem == null) {
       const value = await create(event, context);
       await createItem(id, value);
-      return handler(event, context);
+      return handler(event, context, callback);
     }
 
     // Evaluate if handler should be invoked based on item from DB
-    const shouldRun = await evaluate(existingItem);
+    const shouldRun = await evaluate(existingItem, event, context);
 
     // If handler should be invoked we update the value in the DB before
     // invoking the handler
     if (shouldRun) {
       const value = await create(event, context);
       await updateItem(id, value);
-      return handler(event, context);
+      return handler(event, context, callback);
     }
 
     return onPrevented();
