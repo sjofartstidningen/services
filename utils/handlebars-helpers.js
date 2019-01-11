@@ -10,7 +10,7 @@ const capString = (maxWidth, string) => {
 
   let finalString = `${string.slice(0, -1)}...`;
 
-  while (getWidth(finalString) > maxWidth) {
+  while (getWidth(finalString) > maxWidth && finalString.length > 3) {
     finalString = `${finalString.replace('...', '').slice(0, -1)}...`;
   }
 
