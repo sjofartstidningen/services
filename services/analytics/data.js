@@ -2,6 +2,7 @@ import dateFns from 'date-fns';
 import locale from 'date-fns/locale/sv';
 import axios from 'axios';
 import * as Google from './google';
+import { logger } from '../../utils/logger';
 
 const mailchimpBaseConfig = {
   baseURL: `https://${process.env.MAILCHIMP_DC}.api.mailchimp.com/3.0`,
@@ -50,6 +51,7 @@ async function collectMailchimpData({ start, end }) {
     }),
   );
 
+  logger.info('Mailchimp data successfully collected');
   return { campaigns };
 }
 
@@ -75,18 +77,23 @@ async function collectGoogleData({ start, end }) {
   const viewsDateRanges = weekDateRanges.slice(0, 1);
 
   const [week, month, articles, jobs] = await Promise.all([
-    Google.getVisitsReport(weekDateRanges),
-    Google.getVisitsReport(monthDateRanges),
+    Google.getVisitsReport(weekDateRanges).then(
+      logger.logPromise('Google week data fetched'),
+    ),
+    Google.getVisitsReport(monthDateRanges).then(
+      logger.logPromise('Google month data fetched'),
+    ),
     Google.getViewsReport(
       viewsDateRanges,
       'ga:pagePath!@/jobb/;ga:pagePath!=/;ga:pagePath!=/nyheter/',
-    ),
+    ).then(logger.logPromise('Google articles data fetched')),
     Google.getViewsReport(
       viewsDateRanges,
       'ga:pagePath=@/jobb/;ga:pagePath!@/jobb-karriar/',
-    ),
+    ).then(logger.logPromise('Google jobs data fetched')),
   ]);
 
+  logger.info('Google data succesfully collected');
   return {
     week,
     month,
@@ -104,12 +111,22 @@ async function collect() {
     end: dateFns.endOfWeek(lastWeek, { weekStartsOn: 1 }),
   };
 
+  const logException = msg => error => {
+    logger.error(msg);
+    logger.error(error);
+    return null;
+  };
+
   const [mailchimp, google] = await Promise.all([
-    collectMailchimpData(period).catch(() => null),
-    collectGoogleData(period).catch(() => null),
+    collectMailchimpData(period).catch(
+      logException('Failed fetching Mailchimp data'),
+    ),
+    collectGoogleData(period).catch(
+      logException('Failed fetching Google data'),
+    ),
   ]);
 
-  return {
+  const data = {
     date: {
       week: dateFns.format(period.start, 'W', { locale }),
       year: dateFns.format(period.end, 'YYYY', { locale }),
@@ -119,6 +136,9 @@ async function collect() {
     google,
     mailchimp,
   };
+
+  logger.info('Data successfully collected');
+  return data;
 }
 
 export { collect };
