@@ -1,70 +1,43 @@
-import { env, getEnv } from './env';
-
-const levels = {
-  verbose: 0,
-  debug: 1,
-  info: 2,
-  warning: 3,
-  error: 4,
-};
+import winston from 'winston';
+import { isDevelopmentEnv, isTestEnv } from './env';
 
 class Logger {
-  constructor(level = 1) {
-    this.level = level;
-    this.version = getEnv('VERSION', false);
-    this.id = null;
-    this.event = null;
-    this.env = env;
-    this.tags = [];
-
-    this.verbose = this.createLevel('verbose');
-    this.debug = this.createLevel('debug');
-    this.info = this.createLevel('info');
-    this.warning = this.createLevel('warning');
-    this.error = this.createLevel('error');
-  }
-
-  setLevel(level) {
-    this.level = level;
-  }
-
-  setId(id) {
-    this.id = id;
-  }
-
-  setEvent(event) {
-    this.event = event;
-  }
-
-  setTag(...tags) {
-    this.tags.push(...tags);
-  }
-
-  log({ message, level, tags = [] } = {}) {
-    console.log({
-      level,
-      message,
-      env: this.env,
-      ...(this.version ? { version: this.version } : null),
-      ...(this.id ? { id: this.id } : null),
-      ...(this.event ? { event: this.event } : null),
-      ...(tags.length ? { tags: [...this.tags, ...tags] } : null),
+  constructor(props) {
+    this.logger = winston.createLogger({
+      level: isDevelopmentEnv ? 'debug' : 'info',
+      transports: [new winston.transports.Console()],
+      silent: isTestEnv,
     });
+
+    this.payload = {};
   }
 
-  createLevel(level) {
-    return message => {
-      if (levels[level] >= this.level) this.log({ message, level });
+  setPayload(payload) {
+    this.payload = {
+      ...this.payload,
+      ...payload,
     };
+  }
+
+  log(message) {
+    this.logger.log({ ...message, ...this.payload });
+  }
+
+  info(message) {
+    this.logger.info({ message, ...this.payload });
+  }
+
+  debug(message) {
+    this.logger.debug({ message, ...this.payload });
+  }
+
+  error(message, error) {
+    this.logger.error({ message, error, ...this.payload });
   }
 
   wrapHandler(handler) {
     return (event, context, callback) => {
-      if (event) {
-        this.setId(event.id);
-        this.setEvent(event);
-      }
-
+      if (event) this.setPayload({ event });
       return handler(event, context, callback);
     };
   }
@@ -80,4 +53,4 @@ class Logger {
 
 const logger = new Logger();
 
-export { logger, Logger };
+export { logger };

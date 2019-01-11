@@ -113,8 +113,7 @@ async function collect() {
   };
 
   const logException = msg => error => {
-    logger.error(msg);
-    logger.error(error);
+    logger.error(msg, error);
     return null;
   };
 
