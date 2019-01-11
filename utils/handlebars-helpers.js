@@ -1,3 +1,4 @@
+import { URL } from 'url';
 import { getWidth } from './string-pixel-width';
 
 const percent = num => `${(num * 100).toFixed(1)}%`;
@@ -9,7 +10,7 @@ const capString = (maxWidth, string) => {
 
   let finalString = `${string.slice(0, -1)}...`;
 
-  while (getWidth(finalString) > maxWidth) {
+  while (getWidth(finalString) > maxWidth && finalString.length > 3) {
     finalString = `${finalString.replace('...', '').slice(0, -1)}...`;
   }
 
