@@ -4,6 +4,7 @@ import { analyticsReport as analyticsReportMock } from '../analytics-report';
 
 jest.mock('axios');
 jest.mock('../analytics-report.js');
+jest.mock('../../../utils/logger.js');
 
 beforeEach(() => {
   axiosMock.get.mockReset();

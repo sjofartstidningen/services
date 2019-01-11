@@ -40,15 +40,15 @@ class Logger {
     console.log({
       level,
       message,
-      id: this.id,
+      ...(this.id ? { id: this.id } : null),
       ...(this.event ? { event: this.event } : null),
-      tags: [...this.tags, ...tags],
+      ...(tags.length ? { tags: [...this.tags, ...tags] } : null),
     });
   }
 
   createLevel(level) {
     return message => {
-      if (this.level >= levels[level]) this.log({ message, level });
+      if (levels[level] >= this.level) this.log({ message, level });
     };
   }
 
@@ -57,6 +57,14 @@ class Logger {
       this.setId(event.id);
       this.setEvent(event);
       return handler(event, context, callback);
+    };
+  }
+
+  logPromise(message) {
+    return res => {
+      const msg = typeof message === 'function' ? message(res) : message;
+      this.info(msg);
+      return res;
     };
   }
 }
