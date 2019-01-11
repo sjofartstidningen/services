@@ -1,5 +1,5 @@
 import winston from 'winston';
-import { isDevelopmentEnv, isTestEnv } from './env';
+import { isDevelopmentEnv, isTestEnv, getEnv } from './env';
 
 class Logger {
   constructor(props) {
@@ -9,35 +9,52 @@ class Logger {
       silent: isTestEnv,
     });
 
-    this.payload = {};
+    this.event = {};
+    this.version = getEnv('VERSION');
+    this.requestId = null;
   }
 
-  setPayload(payload) {
-    this.payload = {
-      ...this.payload,
-      ...payload,
+  setEvent(event) {
+    this.event = event;
+  }
+
+  setRequestId(requestId) {
+    this.requestId = requestId;
+  }
+
+  getPayload() {
+    return {
+      event: this.event,
+      version: this.version,
+      ...(this.requestId ? { requestId: this.requestId } : null),
     };
   }
 
   log(message) {
-    this.logger.log({ ...message, ...this.payload });
+    this.logger.log({ ...message, ...this.getPayload() });
   }
 
   info(message) {
-    this.logger.info({ message, ...this.payload });
+    this.logger.info({ message, ...this.getPayload() });
   }
 
   debug(message) {
-    this.logger.debug({ message, ...this.payload });
+    this.logger.debug({ message, ...this.getPayload() });
   }
 
   error(message, error) {
-    this.logger.error({ message, error, ...this.payload });
+    this.logger.error({
+      message,
+      error,
+      ...this.getPayload(),
+    });
   }
 
   wrapHandler(handler) {
     return (event, context, callback) => {
-      if (event) this.setPayload({ event });
+      if (event) this.setEvent(event);
+      if (context) this.setRequestId(context.requestId);
+
       return handler(event, context, callback);
     };
   }

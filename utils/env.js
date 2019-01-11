@@ -4,7 +4,10 @@ const environments = {
   test: 'test',
 };
 
-const getEnv = (variableName, throwOnNonExist = true) => {
+const getEnv = (
+  variableName,
+  throwOnNonExist = process.env.NODE_ENV !== environments.test,
+) => {
   const variable = process.env[variableName];
   if (variable == null && throwOnNonExist) {
     throw new Error(
