@@ -38,6 +38,8 @@ functions:
   analytics:
     description: 'A weekly digest of useful analytics from Google and Mailchimp'
     handler: build/analytics.send
+    environment:
+      VERSION: '1.0.0'
     events:
       - schedule:
         name: weekly

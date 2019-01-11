@@ -1,4 +1,4 @@
-import { env } from './env';
+import { env, getEnv } from './env';
 
 const levels = {
   verbose: 0,
@@ -11,6 +11,7 @@ const levels = {
 class Logger {
   constructor(level = 1) {
     this.level = level;
+    this.version = getEnv('VERSION', false);
     this.id = null;
     this.event = null;
     this.env = env;
@@ -44,6 +45,7 @@ class Logger {
       level,
       message,
       env: this.env,
+      ...(this.version ? { version: this.version } : null),
       ...(this.id ? { id: this.id } : null),
       ...(this.event ? { event: this.event } : null),
       ...(tags.length ? { tags: [...this.tags, ...tags] } : null),
