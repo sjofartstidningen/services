@@ -53,7 +53,7 @@ class Logger {
   wrapHandler(handler) {
     return (event, context, callback) => {
       if (event) this.setEvent(event);
-      if (context) this.setRequestId(context.requestId);
+      if (context) this.setRequestId(context.awsRequestId);
 
       return handler(event, context, callback);
     };
