@@ -12,6 +12,7 @@ custom:
 
 package:
   exclude:
+    - '__mocks__/**'
     - '.cache/**'
     - 'misc/**'
     - 'services/**'

@@ -9,10 +9,14 @@
   "private": true,
   "scripts": {
     "test": "jest --env=node",
-    "build": "rm -rf build && yarn build:analytics",
+    "prebuild": "rm -rf build",
+    "build": "yarn build:analytics",
     "build:analytics": "parcel build services/analytics/index.js -d build/analytics --target node",
+    "predeploy": "yarn run build",
     "deploy": "serverless deploy",
+    "prepackage": "yarn run build",
     "package": "serverless package",
+    "preinvoke": "yarn run build",
     "invoke": "serverless invoke local"
   },
   "dependencies": {
