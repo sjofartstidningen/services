@@ -2,11 +2,11 @@ import * as Env from '../../utils/env';
 import * as Data from './data';
 import * as Email from './email';
 import analyticsConfig from '../../config/analytics.json';
-import { logger } from '../../utils/logger';
+import { logger, wrapHandler } from '../../utils/logger';
 
 const config = analyticsConfig[Env.env] || analyticsConfig.development;
 
-const send = logger.wrapHandler(async (event, context, callback) => {
+const send = wrapHandler(async (event, context, callback) => {
   logger.info(`Execution started in env: ${Env.env}`);
 
   try {
@@ -25,7 +25,7 @@ const send = logger.wrapHandler(async (event, context, callback) => {
     logger.info('Execution successfully finished');
     return { success: true };
   } catch (error) {
-    logger.error('Execution failed', error);
+    logger.error('Execution failed', { error });
     throw error;
   }
 });

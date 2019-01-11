@@ -14,12 +14,14 @@
     "build:analytics": "parcel build services/analytics/index.js -d build/analytics --target node",
     "predeploy": "yarn run build",
     "deploy": "serverless deploy",
+    "deploy:fn": "serverless deploy function",
     "prepackage": "yarn run build",
     "package": "serverless package",
     "preinvoke": "yarn run build",
     "invoke": "serverless invoke local"
   },
   "dependencies": {
+    "aws-sdk": "^2.386.0",
     "axios": "^0.18.0",
     "date-fns": "^1.30.1",
     "esm": "^3.0.84",
@@ -32,7 +34,6 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
-    "aws-sdk": "^2.386.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^23.6.0",

@@ -1,73 +1,51 @@
 import winston from 'winston';
 import { isDevelopmentEnv, isTestEnv, getEnv } from './env';
 
-class Logger {
-  constructor(props) {
-    this.logger = winston.createLogger({
-      level: isDevelopmentEnv ? 'debug' : 'info',
-      transports: [new winston.transports.Console()],
-      silent: isTestEnv,
-    });
+const payload = {};
+const lambda = winston.format(info => {
+  return { ...info, ...payload };
+});
 
-    this.event = {};
-    this.version = getEnv('VERSION');
-    this.requestId = null;
+const errorJson = winston.format(info => {
+  if (info.level === 'error' && info.error) {
+    const { error } = info;
+    info.error = { message: error.message || error.toString() };
   }
 
-  setEvent(event) {
-    this.event = event;
-  }
+  return info;
+});
 
-  setRequestId(requestId) {
-    this.requestId = requestId;
-  }
+const logger = winston.createLogger({
+  level: isDevelopmentEnv ? 'debug' : 'info',
+  transports: [new winston.transports.Console()],
+  silent: isTestEnv,
+  format: winston.format.combine(lambda(), errorJson(), winston.format.json()),
+});
 
-  getPayload() {
-    return {
-      event: this.event,
-      version: this.version,
-      ...(this.requestId ? { requestId: this.requestId } : null),
-    };
-  }
+function wrapHandler(handler) {
+  return (event, context, callback) => {
+    if (event) payload.event = event;
+    if (context) payload.awsRequestId = context.awsRequestId;
+    payload.version = getEnv('VERSION');
 
-  log(message) {
-    this.logger.log({ ...message, ...this.getPayload() });
-  }
-
-  info(message) {
-    this.logger.info({ message, ...this.getPayload() });
-  }
-
-  debug(message) {
-    this.logger.debug({ message, ...this.getPayload() });
-  }
-
-  error(message, error) {
-    this.logger.error({
-      message,
-      error,
-      ...this.getPayload(),
-    });
-  }
-
-  wrapHandler(handler) {
-    return (event, context, callback) => {
-      if (event) this.setEvent(event);
-      if (context) this.setRequestId(context.awsRequestId);
-
-      return handler(event, context, callback);
-    };
-  }
-
-  logPromise(message) {
-    return res => {
-      const msg = typeof message === 'function' ? message(res) : message;
-      this.info(msg);
-      return res;
-    };
-  }
+    return handler(event, context, callback);
+  };
 }
 
-const logger = new Logger();
+function logPromise(message) {
+  return res => {
+    const msg = typeof message === 'function' ? message(res) : message;
+    logger.info(msg);
+    return res;
+  };
+}
 
-export { logger };
+function logException(message) {
+  return error => {
+    const msg = typeof message === 'function' ? message(error) : message;
+    logger.error(msg, { error });
+    return null;
+  };
+}
+
+export { logger, wrapHandler, logPromise, logException };

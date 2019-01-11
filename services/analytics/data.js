@@ -2,7 +2,7 @@ import dateFns from 'date-fns';
 import locale from 'date-fns/locale/sv';
 import axios from 'axios';
 import * as Google from './google';
-import { logger } from '../../utils/logger';
+import { logger, logPromise, logException } from '../../utils/logger';
 import { getEnv } from '../../utils/env';
 
 const mailchimpBaseConfig = {
@@ -79,19 +79,19 @@ async function collectGoogleData({ start, end }) {
 
   const [week, month, articles, jobs] = await Promise.all([
     Google.getVisitsReport(weekDateRanges).then(
-      logger.logPromise('Google week data fetched'),
+      logPromise('Google week data fetched'),
     ),
     Google.getVisitsReport(monthDateRanges).then(
-      logger.logPromise('Google month data fetched'),
+      logPromise('Google month data fetched'),
     ),
     Google.getViewsReport(
       viewsDateRanges,
       'ga:pagePath!@/jobb/;ga:pagePath!=/;ga:pagePath!=/nyheter/',
-    ).then(logger.logPromise('Google articles data fetched')),
+    ).then(logPromise('Google articles data fetched')),
     Google.getViewsReport(
       viewsDateRanges,
       'ga:pagePath=@/jobb/;ga:pagePath!@/jobb-karriar/',
-    ).then(logger.logPromise('Google jobs data fetched')),
+    ).then(logPromise('Google jobs data fetched')),
   ]);
 
   logger.info('Google data succesfully collected');
@@ -110,11 +110,6 @@ async function collect() {
   const period = {
     start: dateFns.startOfWeek(lastWeek, { weekStartsOn: 1 }),
     end: dateFns.endOfWeek(lastWeek, { weekStartsOn: 1 }),
-  };
-
-  const logException = msg => error => {
-    logger.error(msg, error);
-    return null;
   };
 
   const [mailchimp, google] = await Promise.all([

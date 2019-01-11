@@ -4,6 +4,8 @@
 require = require('esm')(module);
 
 process.env.NODE_ENV = 'development';
+process.env.VERSION = 'development';
+
 require('dotenv').config();
 const handler = require('../services/analytics');
 

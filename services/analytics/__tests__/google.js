@@ -3,7 +3,6 @@ import * as Google from '../google';
 import { analyticsReport as analyticsReportMock } from '../analytics-report';
 
 jest.mock('../analytics-report.js');
-jest.mock('../../../utils/logger.js');
 
 const format = date => dateFns.format(date, 'YYYY-MM-DD');
 const dateRange = [
