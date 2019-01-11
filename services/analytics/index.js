@@ -1,8 +1,7 @@
 import * as Data from './data';
 import * as Email from './email';
-import { preventMultipleInvokations } from '../../utils/prevent-multiple-invokations';
 
-async function sendHandler(event, context, callback) {
+async function send(event, context, callback) {
   try {
     const data = await Data.collect();
     const html = await Email.construct(data);
@@ -20,11 +19,5 @@ async function sendHandler(event, context, callback) {
     throw error;
   }
 }
-
-const send = preventMultipleInvokations({
-  id: 'service-analytics',
-  evaluate: () => {},
-  create: () => {},
-})(sendHandler);
 
 export { send };
