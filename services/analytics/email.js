@@ -6,6 +6,7 @@ import { promisify } from 'util';
 import axios from 'axios';
 import * as helpers from '../../utils/handlebars-helpers';
 import { logger } from '../../utils/logger';
+import { getEnv } from '../../utils/env';
 
 const readFile = promisify(fs.readFile);
 
@@ -33,7 +34,7 @@ async function construct(data) {
   return html;
 }
 
-async function send({ body, subject, recipients }) {
+async function send({ body, subject, from, recipients }) {
   logger.info('Will send email');
   logger.info(`Sending with subject: ${subject}`);
   logger.info(`Sending to: ${recipients.map(r => r.email).join(', ')}`);
@@ -42,15 +43,12 @@ async function send({ body, subject, recipients }) {
     'https://api.sendgrid.com/v3/mail/send',
     {
       personalizations: recipients.map(r => ({ to: [r] })),
-      from: { email: process.env.SST_EMAIL, name: process.env.SST_NAME },
+      from,
       subject,
       content: [{ type: 'text/html', value: body }],
       categories: ['services', 'analytics'],
-      mail_settings: {
-        sandbox_mode: { enable: process.env.NODE_ENV !== 'production' },
-      },
     },
-    { headers: { Authorization: `Bearer ${process.env.SENDGRID_API_KEY}` } },
+    { headers: { Authorization: `Bearer ${getEnv('SENDGRID_API_KEY')}` } },
   );
 
   logger.info('Email sent successfully');

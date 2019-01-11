@@ -3,12 +3,13 @@ import locale from 'date-fns/locale/sv';
 import axios from 'axios';
 import * as Google from './google';
 import { logger } from '../../utils/logger';
+import { getEnv } from '../../utils/env';
 
 const mailchimpBaseConfig = {
-  baseURL: `https://${process.env.MAILCHIMP_DC}.api.mailchimp.com/3.0`,
+  baseURL: `https://${getEnv('MAILCHIMP_DC')}.api.mailchimp.com/3.0`,
   auth: {
     username: 'sjofartstidningen',
-    password: process.env.MAILCHIMP_API_KEY,
+    password: getEnv('MAILCHIMP_API_KEY'),
   },
 };
 
@@ -18,7 +19,7 @@ async function collectMailchimpData({ start, end }) {
     params: {
       since_send_time: start,
       before_send_time: end,
-      list_id: process.env.MAILCHIMP_LIST_ID,
+      list_id: getEnv('MAILCHIMP_LIST_ID'),
     },
   });
 

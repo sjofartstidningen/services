@@ -1,12 +1,15 @@
+import * as Env from '../../utils/env';
 import * as Data from './data';
 import * as Email from './email';
+import analyticsConfig from '../../config/analytics.json';
 import { logger } from '../../utils/logger';
 
-logger.setLevel(2); // Info level
+logger.setLevel(Env.isProductionEnv ? 2 : 0);
+const config = analyticsConfig[Env.env] || analyticsConfig.development;
 
 const send = logger.wrapHandler(async (event, context, callback) => {
   const start = Date.now();
-  logger.verbose('Execution started');
+  logger.verbose(`Execution started in env: ${Env.env}`);
 
   try {
     const data = await Data.collect();
@@ -17,7 +20,8 @@ const send = logger.wrapHandler(async (event, context, callback) => {
       subject: `Statistik för webb och nyhetsbrev vecka ${data.date.week} – ${
         data.date.year
       }`,
-      recipients: [], // TODO: Figure out how to add recipients
+      from: config.from,
+      recipients: config.recipients,
     });
 
     logger.info('Execution successfully finished');
