@@ -6,12 +6,10 @@ require = require('esm')(module);
 process.env.NODE_ENV = 'development';
 require('dotenv').config();
 const handler = require('../services/analytics');
-const { logger } = require('../utils/logger');
 
 async function main() {
   try {
-    logger.setLevel(0);
-    await handler.send();
+    await handler.send({ id: 'test' });
   } catch (error) {
     console.error(error);
   }
