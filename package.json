@@ -14,6 +14,7 @@
     "build:analytics": "parcel build services/analytics/index.js -d build/analytics --target node",
     "predeploy": "yarn run build",
     "deploy": "serverless deploy",
+    "predeploy:fn": "yarn run build",
     "deploy:fn": "serverless deploy function",
     "prepackage": "yarn run build",
     "package": "serverless package",
