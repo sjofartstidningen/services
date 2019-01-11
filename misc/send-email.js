@@ -2,21 +2,16 @@
 'use strict';
 
 require = require('esm')(module);
-require('dotenv').config();
-const Data = require('../services/analytics/data');
-const Email = require('../services/analytics/email');
 
-const [, , ...recipients] = process.argv;
+process.env.NODE_ENV = 'development';
+require('dotenv').config();
+const handler = require('../services/analytics');
+const { logger } = require('../utils/logger');
 
 async function main() {
   try {
-    const data = await Data.collect();
-    const html = await Email.construct(data);
-    await Email.send({
-      body: html,
-      subject: 'Test email',
-      recipients: recipients.map(email => ({ email })),
-    });
+    logger.setLevel(0);
+    await handler.send();
   } catch (error) {
     console.error(error);
   }

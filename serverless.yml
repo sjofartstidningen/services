@@ -7,7 +7,7 @@ provider:
   region: ${opt:region, self:custom.defaultRegion}
 
 custom:
-  defaultStage: dev
+  defaultStage: development
   defaultRegion: eu-central-1
 
 package:
@@ -22,6 +22,16 @@ package:
     - '!build/**'
     - '!static/**'
     - '**/*.map'
+
+environment:
+  NODE_ENV: ${opt:stage, self:custom.defaultStage}
+  MAILCHIMP_DC: ${env:MAILCHIMP_DC}
+  MAILCHIMP_API_KEY: ${env:MAILCHIMP_API_KEY}
+  MAILCHIMP_LIST_ID: ${env:MAILCHIMP_LIST_ID}
+  GOOGLE_CLIENT_EMAIL: ${env:GOOGLE_CLIENT_EMAIL}
+  GOOGLE_PRIVATE_KEY: ${env:GOOGLE_PRIVATE_KEY}
+  GOOGLE_VIEW_ID: ${env:GOOGLE_VIEW_ID}
+  SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
 
 functions:
   analytics:

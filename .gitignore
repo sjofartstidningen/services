@@ -1,6 +1,9 @@
 # Build output
 build
 
+# Config
+config/*
+
 # Logs
 logs
 *.log

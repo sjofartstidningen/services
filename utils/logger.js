@@ -1,3 +1,5 @@
+import { env } from './env';
+
 const levels = {
   verbose: 0,
   debug: 1,
@@ -11,6 +13,7 @@ class Logger {
     this.level = level;
     this.id = null;
     this.event = null;
+    this.env = env;
     this.tags = [];
 
     this.verbose = this.createLevel('verbose');
@@ -40,6 +43,7 @@ class Logger {
     console.log({
       level,
       message,
+      env: this.env,
       ...(this.id ? { id: this.id } : null),
       ...(this.event ? { event: this.event } : null),
       ...(tags.length ? { tags: [...this.tags, ...tags] } : null),
@@ -54,8 +58,11 @@ class Logger {
 
   wrapHandler(handler) {
     return (event, context, callback) => {
-      this.setId(event.id);
-      this.setEvent(event);
+      if (event) {
+        this.setId(event.id);
+        this.setEvent(event);
+      }
+
       return handler(event, context, callback);
     };
   }

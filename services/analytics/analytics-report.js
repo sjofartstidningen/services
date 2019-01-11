@@ -1,12 +1,13 @@
 import { google } from 'googleapis';
+import { getEnv } from '../../utils/env';
 
 const scopes = 'https://www.googleapis.com/auth/analytics.readonly';
 
-const viewId = process.env.GOOGLE_VIEW_ID;
+const viewId = getEnv('GOOGLE_VIEW_ID');
 const jwt = new google.auth.JWT(
-  process.env.GOOGLE_CLIENT_EMAIL,
+  getEnv('GOOGLE_CLIENT_EMAIL'),
   null,
-  process.env.GOOGLE_PRIVATE_KEY,
+  getEnv('GOOGLE_PRIVATE_KEY'),
   scopes,
 );
 
