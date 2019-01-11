@@ -1,3 +1,4 @@
+import { URL } from 'url';
 import { getWidth } from './string-pixel-width';
 
 const percent = num => `${(num * 100).toFixed(1)}%`;
