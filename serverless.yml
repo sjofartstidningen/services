@@ -44,7 +44,7 @@ functions:
       SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
     events:
       - schedule:
-          name: weekly
+          name: weekly-${self:provider.stage}
           description: 'Every monday at 6 am (UTC)'
           rate: cron(0 6 ? * MON *)
           enabled: true
