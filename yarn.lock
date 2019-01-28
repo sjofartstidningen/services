@@ -1000,7 +1000,7 @@ async@^1.5.2:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
-async@^2.0.0, async@^2.1.2, async@^2.5.0, async@^2.6.0, async@^2.6.1:
+async@^2.0.0, async@^2.1.2, async@^2.5.0, async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.1.tgz#b245a23ca71930044ec53fa46aa00a3e87c6a610"
   dependencies:
@@ -1039,10 +1039,10 @@ aws-sdk@^2.373.0:
     uuid "3.1.0"
     xml2js "0.4.19"
 
-aws-sdk@^2.386.0:
-  version "2.386.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.386.0.tgz#59c94086a69c4580ffce061d81972d3c1e20d9a1"
-  integrity sha512-ZQOa2KK2f7X0vxgQPeoRIWoBgU20pSMXUDRWF8vjHUacj34CTtGE5lurp2OLYFyiucLOp9OxP0R/zosYgecxPw==
+aws-sdk@^2.395.0:
+  version "2.395.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.395.0.tgz#637e5fa06d69bfb923b17bde24a8bd2a74dedab3"
+  integrity sha512-ldTTjctniZT4E2lq2z3D8Y2u+vpkp+laoEnDkXgjKXTKbiJ0QEtfWsUdx/IQ7awCt8stoxyqZK47DJOxIbRNoA==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -2944,9 +2944,10 @@ eslint@^5.12.0:
     table "^5.0.2"
     text-table "^0.2.0"
 
-esm@^3.0.84:
-  version "3.0.84"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.84.tgz#bb108989f4673b32d4f62406869c28eed3815a63"
+esm@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.1.4.tgz#d75f7c1b16e5be57e0446c267d8c0fda9566983d"
+  integrity sha512-GScwIz0110RTNzBmAQEdqaAYkD9zVhj2Jo+jeizjIcdyTw+C6S0Zv/dlPYgfF41hRTu2f1vQYliubzIkusx2gA==
 
 espree@^5.0.0:
   version "5.0.0"
@@ -5395,10 +5396,10 @@ log-update@^2.3.0:
     cli-cursor "^2.0.0"
     wrap-ansi "^3.0.1"
 
-logform@^1.9.1:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/logform/-/logform-1.10.0.tgz#c9d5598714c92b546e23f4e78147c40f1e02012e"
-  integrity sha512-em5ojIhU18fIMOw/333mD+ZLE2fis0EzXl1ZwHx4iQzmpQi6odNiY/t+ITNr33JZhT9/KEaH+UPIipr6a9EjWg==
+logform@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/logform/-/logform-2.1.0.tgz#eb769f7f98f285a4ed5dc7905cac89be5a1f7c04"
+  integrity sha512-srZ6qfWCHLX0HVBuWiBC9CPWh61PFrj/akMSQTEqVOgik8fbpg849VU/kepesr6kBZ42Jsk8Duuabim6hAh27w==
   dependencies:
     colors "^1.2.1"
     fast-safe-stringify "^2.0.4"
@@ -5672,69 +5673,76 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
-mjml-accordion@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-accordion/-/mjml-accordion-4.3.0.tgz#a7dce26f8de2788a8e409c6004c89391d60ccfa0"
+mjml-accordion@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-accordion/-/mjml-accordion-4.3.1.tgz#8a474d917c423477b5815dd44640688c6d8d2645"
+  integrity sha512-utnvo+4DnKcZVkuxkaAWFdbNNHDkQmmi+ft8JempxWsJeNy0GWRl2fj0p62r2ODKRWPCNtqnKzEIM0y7X3HeyA==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-body@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-body/-/mjml-body-4.3.0.tgz#939d85101efd1894cec7c65efb7095a48579ac7f"
+mjml-body@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-body/-/mjml-body-4.3.1.tgz#6dd1e7bf4355c5c82c47a3e2fe2f5d8f1a7ec5b3"
+  integrity sha512-b0RjN8a6+nBUvWyNPaF12wt4U4mzVlBernOphjllB1N7lk5hFe7NVVHM2/n3s3eEuXoperxESaKLMCI+tuvi2Q==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-button@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-button/-/mjml-button-4.3.0.tgz#25797d363cac2cd2131168006d111b219de5b1e3"
+mjml-button@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-button/-/mjml-button-4.3.1.tgz#ff78142d2f60ece7dceda935249560cf7ec85dc2"
+  integrity sha512-6/Wswyn1qFTHvTmzgYfBB3mAlz2mQ+cF5hyFjUUN4FTulO4EonROjshVmSMP1DK3dO3hp9FjgB/AR/daRFOxEg==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-carousel@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-carousel/-/mjml-carousel-4.3.0.tgz#66156a630f2e6ec5af76e3c0cc3b5294113eee33"
+mjml-carousel@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-carousel/-/mjml-carousel-4.3.1.tgz#9d999eb512ac2352efc0d7b751bdd8031b9feae8"
+  integrity sha512-RF9F46xj8FbkFeUNPy2ElnzZD2SDdfRJ3MDqBjOd5NNCdoTyRzMtPojL+bkgaBfWcjeM2m/gPJp7BYppj1RTPg==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-cli@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-cli/-/mjml-cli-4.3.0.tgz#3728e2d03db61d7ba76934600e7df8e8f34c1a8a"
+mjml-cli@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-cli/-/mjml-cli-4.3.1.tgz#d394da7ae9a6e140c23cda4ee3b8e12707c659e4"
+  integrity sha512-CXBs4IyOgr6lhhe0TfMp358N9vsj1tNfpS3PZdG5nxoymQc1QDCk4E3N8RMLzoz64YfanGV+oEu1VycgAJ8QmQ==
   dependencies:
     babel-runtime "^6.26.0"
     chokidar "^1.6.1"
     cross-env "^5.1.4"
     glob "^7.1.1"
     lodash "^4.17.4"
-    mjml-core "4.3.0"
-    mjml-migrate "4.3.0"
-    mjml-parser-xml "4.3.0"
+    mjml-core "4.3.1"
+    mjml-migrate "4.3.1"
+    mjml-parser-xml "4.3.1"
     mjml-validator "4.3.0"
     yargs "^8.0.2"
 
-mjml-column@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-column/-/mjml-column-4.3.0.tgz#1a80b58a8a2ec416a2085e1a452cc196709cb698"
+mjml-column@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-column/-/mjml-column-4.3.1.tgz#dacd1b4c788c9fc2f1a39d5fef647f45dabdb0bf"
+  integrity sha512-ZLQfifTiR5LgeHYITYXBEAm8uChj/fF0rFYUOiCRAkkILk1/h1WnvYrwDvGFhGHWanPuO868SleHmM53L+EaoA==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-core@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-core/-/mjml-core-4.3.0.tgz#1e2452ac5202a58ddf21e647607cf4c4ecff30e2"
+mjml-core@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-core/-/mjml-core-4.3.1.tgz#5fa44348bcbfa9a5f017c8cce096f5f3ef17bd1f"
+  integrity sha512-Iq1KxLcyJRpPKcXCUujm+3MdfS1RFLTmHg8hg2xucdgVtB7pd4ky6QHQOfpJaoW8H8icv9oIj9XOkiJgo3hTsQ==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
@@ -5742,192 +5750,212 @@ mjml-core@4.3.0:
     js-beautify "^1.6.14"
     juice "^4.1.0"
     lodash "^4.17.2"
-    mjml-migrate "4.3.0"
-    mjml-parser-xml "4.3.0"
+    mjml-migrate "4.3.1"
+    mjml-parser-xml "4.3.1"
     mjml-validator "4.3.0"
 
-mjml-divider@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-divider/-/mjml-divider-4.3.0.tgz#3a4196a7ee66b99ad654bc02f02811e7ff208ea1"
+mjml-divider@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-divider/-/mjml-divider-4.3.1.tgz#b63e000a03f5e876d3a0b6c7f197d9f73a23dfc7"
+  integrity sha512-yWs1nBvBR6YiAR345VZHZUxHYOjZx0CpUYsK5+DWmUrs4qKcMs7kZoOiQ/1ESvRtJS59TLsaw5ZzTswCII4Ppw==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-group@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-group/-/mjml-group-4.3.0.tgz#58915a00efca553e8993b86bad7483ec3d39be38"
+mjml-group@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-group/-/mjml-group-4.3.1.tgz#df3f725d54f736e8581c42e3c7d67b4836b2fd36"
+  integrity sha512-JiMi8kTvsh70+DrqVUSLt9eXfxgbHGHQnW+BI1dp9dY+aJac6Mu1mk1oeZWiwsQFyRiofT7Laxd8Vm4KAwSphw==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-head-attributes@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-head-attributes/-/mjml-head-attributes-4.3.0.tgz#100fe58df2e4845d5966165c8fcb1b8e0ec0f658"
+mjml-head-attributes@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-head-attributes/-/mjml-head-attributes-4.3.1.tgz#b1be58ccaa58a102fb090f8f777b2b24ded5f446"
+  integrity sha512-ZWyXxRolnu2I41CHuCXyXkKSiGbYf5s5iy70vyIFBoa6Dz9Gm31DMk97cMW2Nodd2UEGMju2pa2m+ElMcPcS2A==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-head-breakpoint@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-head-breakpoint/-/mjml-head-breakpoint-4.3.0.tgz#0cbcfa2df0e37d5cd46c0e0d8e5c67eeceff4707"
+mjml-head-breakpoint@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-head-breakpoint/-/mjml-head-breakpoint-4.3.1.tgz#dffd740f42a00284ea1a11be0ad35ffdc539546b"
+  integrity sha512-Ij6+FIAZKwSbwEseVXMeu9fjP3h2f4EutHyjyH90tExkaIvx9a1Rc7oJA3jpjTbUIkIjLRecEk0XGxgGhn5mdw==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-head-font@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-head-font/-/mjml-head-font-4.3.0.tgz#3551875b195fbfd3b65c3aadda9b7e4b31998584"
+mjml-head-font@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-head-font/-/mjml-head-font-4.3.1.tgz#955368c22fde08ff8919e38045044fce4f63ffc5"
+  integrity sha512-T4aOt2d6nsb63UrHHCPeijmeaWUDSEDDV2n14HQlEkCLwz2nbFRfopEQZakdVf8oa3eWvS82wCdPPq83NNCAdg==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-head-preview@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-head-preview/-/mjml-head-preview-4.3.0.tgz#1cc90d58f2ed3163a7082f15192404c5ddbe2efe"
+mjml-head-preview@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-head-preview/-/mjml-head-preview-4.3.1.tgz#591f4b901de3cad536a20acf167565a8cffc8799"
+  integrity sha512-Fc8SpGUKU+RNAdbKSuDL0S4hePr8zYlvNR5FC3lUN9U4lomrE7/i8KBZbJdoZPRuZH4gKyv1BlT5Td1xkyWKdQ==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-head-style@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-head-style/-/mjml-head-style-4.3.0.tgz#8a8d1089d66993a212a76114d0fbf5d209bbd209"
+mjml-head-style@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-head-style/-/mjml-head-style-4.3.1.tgz#89c7aeab73ac73c5aed83fa7cc73e42a175b85d8"
+  integrity sha512-qohC5W5Ur9Y4kqNcNP1dRr5sDeb59tEkYoS4M8leQutW8w1Aq5X0jq+/JNDAQB4FylYCpXIy3rO2vjPUI68X9A==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-head-title@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-head-title/-/mjml-head-title-4.3.0.tgz#73fe748387546e1497a8f98baf61017a8bf38832"
+mjml-head-title@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-head-title/-/mjml-head-title-4.3.1.tgz#1722d303e80f97c276710b0c5158c40595c94d5d"
+  integrity sha512-spzZNmhfLL+AmT7w3m0UBMG2VpMv3fOX6B0nlAeDCnv5VWLgO51UvhATWYqccHX12Ee5Fnng4N0lB5TRmSF8mw==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-head@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-head/-/mjml-head-4.3.0.tgz#78efcd7d46204922cc7c499775ee8f1fe4cfc082"
+mjml-head@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-head/-/mjml-head-4.3.1.tgz#264d0a234540c7116cb40b2965442107e59d4a6f"
+  integrity sha512-3sg3PTcbNt2x3e90+C0ryfKJYAEiGpVXOLBpBld39Hnkvl1LNwMw42NZPoHWbV1bU/rS/gM9D6e4Jy9OCYSCfQ==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-hero@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-hero/-/mjml-hero-4.3.0.tgz#ff8bd422a9f82771fa2d643ab930eefec463121f"
+mjml-hero@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-hero/-/mjml-hero-4.3.1.tgz#08455a6906782accaa11d79e3c6c0fbd3594c260"
+  integrity sha512-jyheCr5M7b6XEzG6Ripn/tF789yo9gfT0zZnO9gVbJWTlwpHC6BGac8UaBHguc3kFtzoi85n5Ob1D0j/qbCOcA==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-image@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-image/-/mjml-image-4.3.0.tgz#044d6c8a4cc640ac97f4b592b0788eff4c3e3b06"
+mjml-image@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-image/-/mjml-image-4.3.1.tgz#19f6f50778c1132b569b228c0216457f77acb00e"
+  integrity sha512-IYsywUHN2RKnj1QUf8WnNz93tNgL2/p1sUdnhtZ9ccObPfpSxDc1BkkOVo6PLf2sADTuposNHGajB4lqV45Oyg==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-migrate@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-migrate/-/mjml-migrate-4.3.0.tgz#ce73bfdb3cfea8e36ee6563849218b820f7a5381"
+mjml-migrate@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-migrate/-/mjml-migrate-4.3.1.tgz#c9c428d117f8d25b58003d6e4c4637d2ded332a3"
+  integrity sha512-NLbk4YW4ht+v79qNtgirMD53EFq2qwBaHDZmETu5V+i7xgshiQv+lskA5tZpe4qtetIHHpCPUJC3hyt39gzAzg==
   dependencies:
     babel-runtime "^6.26.0"
     commander "^2.11.0"
     cross-env "^5.1.4"
     js-beautify "^1.6.14"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
-    mjml-parser-xml "4.3.0"
+    mjml-core "4.3.1"
+    mjml-parser-xml "4.3.1"
 
-mjml-navbar@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-navbar/-/mjml-navbar-4.3.0.tgz#b058a62a806173aee5af0ecc6c840d7eec2ed4ac"
+mjml-navbar@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-navbar/-/mjml-navbar-4.3.1.tgz#3ca9aa252b77dbcb84a699998414b76789392094"
+  integrity sha512-XvMh8u+UZGvcBFsiR+z5OEiiWnf+xqx0ytIqoYLlAtETyJlnBBrYuSSD5iBCQhWdx7lwzKLyzguQ1nmOcuvd7Q==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-parser-xml@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-parser-xml/-/mjml-parser-xml-4.3.0.tgz#284603bfbbca45dc54e2d2779cceb645e9a3d4af"
+mjml-parser-xml@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-parser-xml/-/mjml-parser-xml-4.3.1.tgz#89074988f3f75fa468fca9284020bc93680ef1b7"
+  integrity sha512-dcKrPOzCeDL/yEsu21OYkLodAxQA60ergM9GY2RGIHcTSUz4rcB92oBwS0HmUImiD60ByddcYCHNJxredRDBSQ==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     htmlparser2 "^3.9.2"
     lodash "^4.17.2"
 
-mjml-raw@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-raw/-/mjml-raw-4.3.0.tgz#7bc6f97f19d97979e5795d206cf32db04b97a9f4"
+mjml-raw@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-raw/-/mjml-raw-4.3.1.tgz#af1e2d505315acb909adca59154d1bdc7f5769d4"
+  integrity sha512-tyZRYgyZxZcmY7Q4uJ4BfUABTO3H6wYZhch/XUZ7ZVK9aFnYqv5WxQNY64ZA9jlVmy26ZonzJ/nEC00tFgY+hw==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-section@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-section/-/mjml-section-4.3.0.tgz#2ec2c801f38afbb2f5d140d317026c2a2063a70b"
+mjml-section@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-section/-/mjml-section-4.3.1.tgz#9ed58bc75ea85e23126c7b91b8fd220d9386bbaf"
+  integrity sha512-ZVSneZXOfYoGFp45KItDyBRzFxdwr+410h4Vk3KByHZF5976PKBOjtAAoGkBmhsEacCpWNtP2dKm5AuycM8wNQ==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-social@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-social/-/mjml-social-4.3.0.tgz#14d1465df60e15ae0cea238079bb294e36e17413"
+mjml-social@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-social/-/mjml-social-4.3.1.tgz#9e07629fc59e4249e8cbea71f14d9dbf463ce2e8"
+  integrity sha512-ICW5mlGsPKYKtXF+33I3HQy8H2ab9pY7OUM8JmwIB9XMnvfQTLBf5uSrMRaRjoQ09sXXsyzuR4mpaQs+7khxIg==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-spacer@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-spacer/-/mjml-spacer-4.3.0.tgz#91492dcd11725c49d8f6fdcff057abaa5f9031ca"
+mjml-spacer@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-spacer/-/mjml-spacer-4.3.1.tgz#99900d1118eda77a1424045dc64d85634d8ef12b"
+  integrity sha512-/x0SDTqfkJzPjPj7ORxJgvd11+0Ht2GM7537MbSpxSUsSeRLaTRA92xn9/qRk5LKm0c+vOXwYWRAvtMUsSv2NQ==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-table@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-table/-/mjml-table-4.3.0.tgz#86d68e893b256c529126c5cf00c205cc26729c00"
+mjml-table@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-table/-/mjml-table-4.3.1.tgz#de1eaf67807e31720626e9aac3383f751e7e4a94"
+  integrity sha512-n1ZEYHvZhWvaehz//q2W6LQMbX3Sqd8uWu8ux4cP6WrRnmSDG7gCdcRwxrhSMjfzgP9ZXtT9NahkqfFTKSkJfg==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
-mjml-text@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-text/-/mjml-text-4.3.0.tgz#7b43511da7ea84cc5de53a134e96f4f7d1a8507d"
+mjml-text@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-text/-/mjml-text-4.3.1.tgz#0d141b6ce930c894d7e22feaa412af1e5c7c6698"
+  integrity sha512-z1H7xg8ugqWwMv69B/naGGoLI9C1jHpGsw4IFpB814qpA7FPtKWxgwz33fKdL9tju3mv+TBOqzYTbxuaQjTGtA==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
+    mjml-core "4.3.1"
 
 mjml-validator@4.3.0:
   version "4.3.0"
@@ -5938,49 +5966,51 @@ mjml-validator@4.3.0:
     lodash "^4.17.2"
     warning "^3.0.0"
 
-mjml-wrapper@4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml-wrapper/-/mjml-wrapper-4.3.0.tgz#a53cab20d26840747b9d04bc158c8070b0875514"
+mjml-wrapper@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml-wrapper/-/mjml-wrapper-4.3.1.tgz#2203f748f796c74c98f1d3f611548bd0a0d1da98"
+  integrity sha512-wmfa3A+0BrjneqV/vxGgGDMm0AswWFEJkJ1kg2Qh4hxM4duaQJd9C/STy8PuTQ+IVMadGld0O1bi9bOEeKhVEg==
   dependencies:
     babel-runtime "^6.26.0"
     cross-env "^5.1.4"
     lodash "^4.17.2"
-    mjml-core "4.3.0"
-    mjml-section "4.3.0"
+    mjml-core "4.3.1"
+    mjml-section "4.3.1"
 
-mjml@^4.3.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/mjml/-/mjml-4.3.0.tgz#16d700ddf54fe94f4431a9edbf7f63968ff87ba6"
+mjml@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/mjml/-/mjml-4.3.1.tgz#0db0026f6ef538b53e05f29d7011eab768f337c9"
+  integrity sha512-hUCdCodoWcLGaRifSCFuLo32ZSlh70kM44wUzEd3iXpaCfgaCen9YfykL4wSMkDogA1llMd2yWggRUVc8V2R+A==
   dependencies:
     cross-env "^5.1.4"
-    mjml-accordion "4.3.0"
-    mjml-body "4.3.0"
-    mjml-button "4.3.0"
-    mjml-carousel "4.3.0"
-    mjml-cli "4.3.0"
-    mjml-column "4.3.0"
-    mjml-core "4.3.0"
-    mjml-divider "4.3.0"
-    mjml-group "4.3.0"
-    mjml-head "4.3.0"
-    mjml-head-attributes "4.3.0"
-    mjml-head-breakpoint "4.3.0"
-    mjml-head-font "4.3.0"
-    mjml-head-preview "4.3.0"
-    mjml-head-style "4.3.0"
-    mjml-head-title "4.3.0"
-    mjml-hero "4.3.0"
-    mjml-image "4.3.0"
-    mjml-migrate "4.3.0"
-    mjml-navbar "4.3.0"
-    mjml-raw "4.3.0"
-    mjml-section "4.3.0"
-    mjml-social "4.3.0"
-    mjml-spacer "4.3.0"
-    mjml-table "4.3.0"
-    mjml-text "4.3.0"
+    mjml-accordion "4.3.1"
+    mjml-body "4.3.1"
+    mjml-button "4.3.1"
+    mjml-carousel "4.3.1"
+    mjml-cli "4.3.1"
+    mjml-column "4.3.1"
+    mjml-core "4.3.1"
+    mjml-divider "4.3.1"
+    mjml-group "4.3.1"
+    mjml-head "4.3.1"
+    mjml-head-attributes "4.3.1"
+    mjml-head-breakpoint "4.3.1"
+    mjml-head-font "4.3.1"
+    mjml-head-preview "4.3.1"
+    mjml-head-style "4.3.1"
+    mjml-head-title "4.3.1"
+    mjml-hero "4.3.1"
+    mjml-image "4.3.1"
+    mjml-migrate "4.3.1"
+    mjml-navbar "4.3.1"
+    mjml-raw "4.3.1"
+    mjml-section "4.3.1"
+    mjml-social "4.3.1"
+    mjml-spacer "4.3.1"
+    mjml-table "4.3.1"
+    mjml-text "4.3.1"
     mjml-validator "4.3.0"
-    mjml-wrapper "4.3.0"
+    mjml-wrapper "4.3.1"
 
 mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   version "0.5.1"
@@ -7510,7 +7540,7 @@ readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@^3.0.6:
+readable-stream@^3.0.6, readable-stream@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.1.1.tgz#ed6bbc6c5ba58b090039ff18ce670515795aeb06"
   dependencies:
@@ -9049,7 +9079,7 @@ widest-line@^2.0.0:
   dependencies:
     string-width "^2.1.1"
 
-winston-transport@^4.2.0:
+winston-transport@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/winston-transport/-/winston-transport-4.3.0.tgz#df68c0c202482c448d9b47313c07304c2d7c2c66"
   integrity sha512-B2wPuwUi3vhzn/51Uukcao4dIduEiPOcOt9HJ3QeaXgkJ5Z7UwpBzxS4ZGNHtrxrUvTwemsQiSys0ihOf8Mp1A==
@@ -9057,20 +9087,20 @@ winston-transport@^4.2.0:
     readable-stream "^2.3.6"
     triple-beam "^1.2.0"
 
-winston@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-3.1.0.tgz#80724376aef164e024f316100d5b178d78ac5331"
-  integrity sha512-FsQfEE+8YIEeuZEYhHDk5cILo1HOcWkGwvoidLrDgPog0r4bser1lEIOco2dN9zpDJ1M88hfDgZvxe5z4xNcwg==
+winston@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/winston/-/winston-3.2.0.tgz#f42735b194a425526025d3ae721246c796172f24"
+  integrity sha512-r2e2ufodByh8U1infSXNLViN7ekqVRoSkcJgpS6AzAyKve0uiUkeQq0kxdSDr8bwaM1rGXprvvoC1B+ocy5L0w==
   dependencies:
-    async "^2.6.0"
+    async "^2.6.1"
     diagnostics "^1.1.1"
     is-stream "^1.1.0"
-    logform "^1.9.1"
+    logform "^2.1.0"
     one-time "0.0.4"
-    readable-stream "^2.3.6"
+    readable-stream "^3.1.1"
     stack-trace "0.0.x"
     triple-beam "^1.3.0"
-    winston-transport "^4.2.0"
+    winston-transport "^4.3.0"
 
 word-wrap@^1.0.3:
   version "1.2.3"
