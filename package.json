@@ -10,8 +10,9 @@
   "scripts": {
     "test": "jest --env=node",
     "prebuild": "rm -rf build",
-    "build": "yarn build:analytics",
+    "build": "yarn build:analytics && yarn build:render-main",
     "build:analytics": "parcel build services/analytics/index.js -d build/analytics --target node",
+    "build:render-main": "parcel build services/render-mail/index.js -d build/render-mail --target node",
     "predeploy": "yarn run build",
     "deploy": "serverless deploy",
     "predeploy:fn": "yarn run build",

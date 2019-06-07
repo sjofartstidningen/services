@@ -8,6 +8,9 @@ provider:
   runtime: nodejs8.10
   stage: ${opt:stage, self:custom.defaultStage}
   region: ${opt:region, self:custom.defaultRegion}
+  apiKeys:
+    - name: render-email-${opt:stage}
+      description: 'Key to access render-email endpoint'
 
 custom:
   defaultStage: development
@@ -48,3 +51,13 @@ functions:
           description: 'Every monday at 6 am (UTC)'
           rate: cron(0 6 ? * MON *)
           enabled: true
+
+  render-mail:
+    description: 'Render provided mjml-string into html'
+    handler: build/render-mail.render
+    events:
+      - http:
+          path: render-mail
+          method: post
+          cors: true
+          private: true
