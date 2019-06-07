@@ -6,7 +6,7 @@ import { logger, wrapHandler } from '../../utils/logger';
 
 const config = analyticsConfig[Env.env] || analyticsConfig.development;
 
-const send = wrapHandler(async (event, context, callback) => {
+const send = wrapHandler(async (event, context) => {
   logger.info(`Execution started in env: ${Env.env}`);
 
   try {
@@ -15,9 +15,7 @@ const send = wrapHandler(async (event, context, callback) => {
 
     await Email.send({
       body: html,
-      subject: `Statistik för webb och nyhetsbrev vecka ${data.date.week} – ${
-        data.date.year
-      }`,
+      subject: `Statistik för webb och nyhetsbrev vecka ${data.date.week} – ${data.date.year}`,
       from: config.from,
       recipients: config.recipients,
     });
