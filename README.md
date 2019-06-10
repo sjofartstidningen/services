@@ -4,10 +4,13 @@ A set of serverless services for Sjöfartstidningen
 
 ## Deployment
 
+Make sure access and secret keys are defined in `.env` then run one of the
+following.
+
 ```sh
 # Command when whole stack updated
-yarn deploy --stage production --aws-profile sst
+STAGE=production yarn deploy
 
 # Command when single function updated
-yarn deploy:fn -f [name] --stage production --aws-profile sst
+STAGE=production yarn deploy:fn -f [name]
 ```
