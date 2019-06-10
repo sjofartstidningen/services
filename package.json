@@ -15,8 +15,8 @@
     "build:render-main": "ncc build services/render-mail/index.js -o build/render-mail",
     "predocker": "docker build -t services .",
     "docker": "docker run --env-file .env --env STAGE=${STAGE} services",
-    "deploy": "yarn run docker ./node_modules/.bin/serverless deploy --stage=${STAGE}",
-    "deploy:fn": "yarn run docker ./node_modules/.bin/serverless deploy function --stage=${STAGE}"
+    "deploy": "yarn run docker serverless deploy --stage=${STAGE}",
+    "deploy:fn": "yarn run docker serverless deploy function --stage=${STAGE}"
   },
   "dependencies": {
     "aws-sdk": "^2.471.0",
@@ -54,6 +54,7 @@
     "lint-staged": "^8.2.0",
     "prettier": "^1.18.2",
     "serverless": "^1.44.1",
+    "serverless-api-cloudfront": "^0.9.5",
     "typescript": "^3.5.1"
   },
   "config": {

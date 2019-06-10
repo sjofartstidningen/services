@@ -8,6 +8,7 @@ RUN npm install -g yarn
 # The STAGE environment variable can be overridden by defining it before deploy
 # Example: `STAGE=production yarn run deploy`
 ENV STAGE development
+ENV PATH $PATH:./node_modules/.bin
 
 # We copy package.json and yarn.lock before any other files in order to leverage
 # Dockers caching before running `yarn install`
