@@ -1,5 +1,8 @@
 service: sjofartstidningen-services
 
+plugins:
+  - serverless-api-cloudfront
+
 provider:
   name: aws
   runtime: nodejs8.10
@@ -9,9 +12,7 @@ provider:
     - name: render-email-${opt:stage}
       description: 'Key to access render-email endpoint'
 
-custom:
-  defaultStage: development
-  defaultRegion: eu-north-1
+custom: ${file(./serverless.config.js)}
 
 package:
   exclude:
