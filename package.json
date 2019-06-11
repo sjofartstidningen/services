@@ -13,10 +13,9 @@
     "build": "yarn build:analytics && yarn build:render-main",
     "build:analytics": "ncc build services/analytics/index.js -o build/analytics",
     "build:render-main": "ncc build services/render-mail/index.js -o build/render-mail",
-    "predocker": "docker build -t services .",
-    "docker": "docker run --env-file .env --env STAGE=${STAGE} services",
-    "deploy": "yarn run docker serverless deploy --stage=${STAGE}",
-    "deploy:fn": "yarn run docker serverless deploy function --stage=${STAGE}"
+    "deploy": "lambi --env STAGE=${STAGE} --env-file .env 'yarn build && serverless deploy --stage=${STAGE}'",
+    "deploy:analytics": "lambi --env STAGE=${STAGE} --env-file .env 'yarn build:analytics && serverless deploy --stage=${STAGE} -f analytics'",
+    "deploy:render-mail": "lambi --env STAGE=${STAGE} --env-file .env 'yarn build:render-main && serverless deploy --stage=${STAGE} -f render-mail'"
   },
   "dependencies": {
     "aws-sdk": "^2.471.0",
@@ -32,6 +31,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
+    "@fransvilhelm/lambi": "^1.1.0",
     "@types/node": "^12.0.7",
     "@typescript-eslint/eslint-plugin": "1.x",
     "@typescript-eslint/parser": "1.x",
