@@ -12,7 +12,26 @@ provider:
     - name: render-email-${opt:stage}
       description: 'Key to access render-email endpoint'
 
-custom: ${file(./serverless.config.js)}
+custom:
+  defaultStage: development
+  defaultRegion: eu-north-1
+
+  scheduleEnabled:
+    production: true
+    development: false
+
+  cloudFrontDomain:
+    production: services.sjofartstidningen.se
+    default: ${self:provider.stage}.services.sjofartstidningen.com
+
+  apiCloudFront:
+    domain: ${self:custom.cloudFrontDomain.${self:provider.stage, 'default'}}
+    certificate: ${env:AWS_CERTIFICATE_ARN}
+    compress: true
+    cookies: none
+    headers:
+      - x-api-key
+    querystring: all
 
 package:
   exclude:
@@ -26,8 +45,8 @@ functions:
     handler: build/analytics.send
     timeout: 10
     environment:
-      VERSION: '1.0.3'
-      NODE_ENV: ${opt:stage, self:custom.defaultStage}
+      VERSION: '1.0.4'
+      NODE_ENV: ${self:provider.stage}
       MAILCHIMP_DC: ${env:MAILCHIMP_DC}
       MAILCHIMP_API_KEY: ${env:MAILCHIMP_API_KEY}
       MAILCHIMP_LIST_ID: ${env:MAILCHIMP_LIST_ID}
@@ -40,14 +59,14 @@ functions:
           name: weekly-${self:provider.stage}
           description: 'Every monday at 6 am (UTC)'
           rate: cron(0 6 ? * MON *)
-          enabled: true
+          enabled: ${self:custom.scheduleEnabled.${self:provider.stage}}
 
   render-mail:
     description: 'Render provided mjml-string into html'
     handler: build/render-mail.render
     environment:
       VERSION: '1.0.0'
-      NODE_ENV: ${opt:stage, self:custom.defaultStage}
+      NODE_ENV: ${self:provider.stage}
     events:
       - http:
           path: render-mail
