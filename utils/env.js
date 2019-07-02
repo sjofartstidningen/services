@@ -15,7 +15,16 @@ const getEnv = (
     );
   }
 
-  return variable;
+  /**
+   * This replace call might seem odd. But there is something happening to the
+   * env variables while being added to the functions. `\n`-chars gets
+   * transformed to `\\n`. This becomes especially problematic for PEM-keys
+   * which will contain new line chars.
+   * @link https://github.com/googleapis/google-api-nodejs-client/issues/1110#issuecomment-436868760
+   */
+  return typeof variable === 'string'
+    ? variable.replace(new RegExp('\\\\n', 'g'), '\n')
+    : variable;
 };
 
 const validEnv =
