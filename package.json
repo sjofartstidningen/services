@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "jest --env=node",
+    "test": "jest",
+    "lint": "eslint misc services utils",
     "prebuild": "rm -rf build",
     "build": "yarn build:analytics && yarn build:render-main",
     "build:analytics": "ncc build services/analytics/index.js -o build/analytics",
@@ -18,42 +19,42 @@
     "deploy:render-mail": "lambi --env STAGE=${STAGE} --env-file .env 'yarn build:render-main && serverless deploy --stage=${STAGE} -f render-mail'"
   },
   "dependencies": {
-    "aws-sdk": "^2.471.0",
+    "aws-sdk": "^2.553.0",
     "axios": "^0.19.0",
     "date-fns": "^1.30.1",
     "googleapis": "^40.0.0",
-    "handlebars": "^4.1.2",
-    "http-errors": "^1.7.2",
+    "handlebars": "^4.4.5",
+    "http-errors": "^1.7.3",
     "lodash.deburr": "^4.1.0",
-    "mjml": "^4.3.1",
+    "mjml": "^4.5.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@fransvilhelm/lambi": "^1.1.0",
-    "@types/node": "^12.0.7",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@fransvilhelm/lambi": "^2.0.0",
+    "@types/node": "^12.11.2",
     "@typescript-eslint/eslint-plugin": "1.x",
     "@typescript-eslint/parser": "1.x",
-    "@zeit/ncc": "^0.18.5",
-    "babel-eslint": "10.x",
-    "babel-jest": "^24.8.0",
-    "commitizen": "^3.1.1",
-    "cz-conventional-changelog": "^2.1.0",
-    "dotenv": "^8.0.0",
-    "eslint": "5.x",
-    "eslint-config-react-app": "^4.0.1",
-    "eslint-plugin-flowtype": "3.9.1",
+    "@zeit/ncc": "^0.20.5",
+    "babel-eslint": "10.0.3",
+    "babel-jest": "^24.9.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2",
+    "dotenv": "^8.2.0",
+    "eslint": "6.x",
+    "eslint-config-react-app": "5.0.2",
+    "eslint-plugin-flowtype": "3.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
-    "eslint-plugin-react-hooks": "1.6.0",
+    "eslint-plugin-react-hooks": "1.x",
     "esm": "^3.2.25",
-    "husky": "^2.4.0",
-    "jest": "^24.8.0",
-    "lint-staged": "^8.2.0",
+    "husky": "^3.0.9",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
-    "serverless": "^1.44.1",
+    "serverless": "^1.54.0",
     "serverless-api-cloudfront": "^0.9.5",
     "typescript": "^3.5.1"
   },
@@ -68,18 +69,15 @@
     }
   },
   "lint-staged": {
-    "concurrent": false,
-    "linters": {
-      "*.js": [
-        "jest --env=node --passWithNoTests --findRelatedTests",
-        "eslint --fix",
-        "git add"
-      ],
-      "*.{js,json,css,md,html,yml}": [
-        "prettier --write",
-        "git add"
-      ]
-    }
+    "*.js": [
+      "jest --env=node --passWithNoTests --findRelatedTests",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{js,ts,jsx,tsx,json,md,yml,html}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "prettier": {
     "printWidth": 80,
@@ -91,5 +89,8 @@
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
     "proseWrap": "always"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
