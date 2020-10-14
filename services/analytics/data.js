@@ -1,4 +1,4 @@
-import dateFns from 'date-fns';
+import * as dateFns from 'date-fns';
 import locale from 'date-fns/locale/sv';
 import axios from 'axios';
 
@@ -58,7 +58,7 @@ async function collectMailchimpData({ start, end }) {
 }
 
 async function collectGoogleData({ start, end }) {
-  const format = (d) => dateFns.format(d, 'YYYY-MM-DD');
+  const format = (d) => dateFns.format(d, 'yyyy-MM-dd');
 
   const weekDateRanges = [
     { startDate: format(start), endDate: format(end) },
@@ -124,10 +124,10 @@ async function collect() {
 
   const data = {
     date: {
-      week: dateFns.format(period.start, 'W', { locale }),
-      year: dateFns.format(period.end, 'YYYY', { locale }),
-      start: dateFns.format(period.start, 'D MMMM', { locale }),
-      end: dateFns.format(period.end, 'D MMMM', { locale }),
+      week: dateFns.format(period.start, 'w', { locale }),
+      year: dateFns.format(period.end, 'yyyy', { locale }),
+      start: dateFns.format(period.start, 'd MMMM', { locale }),
+      end: dateFns.format(period.end, 'd MMMM', { locale }),
     },
     google,
     mailchimp,
