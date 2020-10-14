@@ -1,9 +1,10 @@
 import { URL } from 'url';
+
 import { getWidth } from './string-pixel-width';
 
-const percent = num => `${(num * 100).toFixed(1)}%`;
+const percent = (num) => `${(num * 100).toFixed(1)}%`;
 
-const formatNumber = num => num.toLocaleString();
+const formatNumber = (num) => num.toLocaleString();
 
 const capString = (maxWidth, string) => {
   if (getWidth(string) < maxWidth) return string;
@@ -17,7 +18,7 @@ const capString = (maxWidth, string) => {
   return finalString;
 };
 
-const urlPath = str => {
+const urlPath = (str) => {
   const url = new URL(str);
   return `${url.pathname}${url.search}`;
 };

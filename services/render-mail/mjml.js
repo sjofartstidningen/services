@@ -1,6 +1,7 @@
 import mjml2html from 'mjml';
 import mjmlPkg from 'mjml/package.json';
 import { BadRequest } from 'http-errors';
+
 import { getEnv } from '../../utils/env';
 
 const render = (mjml, userConfig = {}) => {

@@ -1,6 +1,7 @@
 import dateFns from 'date-fns';
 import locale from 'date-fns/locale/sv';
 import axios from 'axios';
+
 import * as Google from './google';
 import { logger, logPromise, logException } from '../../utils/logger';
 import { getEnv } from '../../utils/env';
@@ -24,7 +25,7 @@ async function collectMailchimpData({ start, end }) {
   });
 
   const campaigns = await Promise.all(
-    data.campaigns.map(async campaign => {
+    data.campaigns.map(async (campaign) => {
       const { data: clickReport } = await axios.get(
         `/reports/${campaign.id}/click-details`,
         {
@@ -44,7 +45,7 @@ async function collectMailchimpData({ start, end }) {
         articles: clickReport.urls_clicked
           .sort((a, b) => b.total_clicks - a.total_clicks)
           .slice(0, 5)
-          .map(item => ({
+          .map((item) => ({
             url: item.url,
             clicks: item.total_clicks,
           })),
@@ -57,7 +58,7 @@ async function collectMailchimpData({ start, end }) {
 }
 
 async function collectGoogleData({ start, end }) {
-  const format = d => dateFns.format(d, 'YYYY-MM-DD');
+  const format = (d) => dateFns.format(d, 'YYYY-MM-DD');
 
   const weekDateRanges = [
     { startDate: format(start), endDate: format(end) },

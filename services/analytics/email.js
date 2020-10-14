@@ -1,9 +1,11 @@
 import path from 'path';
 import fs from 'fs';
+import { promisify } from 'util';
+
 import Handlebars from 'handlebars';
 import mjml from 'mjml';
-import { promisify } from 'util';
 import axios from 'axios';
+
 import * as helpers from '../../utils/handlebars-helpers';
 import { logger } from '../../utils/logger';
 import { getEnv } from '../../utils/env';
@@ -37,12 +39,12 @@ async function construct(data) {
 async function send({ body, subject, from, recipients }) {
   logger.info('Will send email');
   logger.info(`Sending with subject: ${subject}`);
-  logger.info(`Sending to: ${recipients.map(r => r.email).join(', ')}`);
+  logger.info(`Sending to: ${recipients.map((r) => r.email).join(', ')}`);
 
   await axios.post(
     'https://api.sendgrid.com/v3/mail/send',
     {
-      personalizations: recipients.map(r => ({ to: [r] })),
+      personalizations: recipients.map((r) => ({ to: [r] })),
       from,
       subject,
       content: [{ type: 'text/html', value: body }],

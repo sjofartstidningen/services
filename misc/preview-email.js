@@ -4,6 +4,7 @@
 require = require('esm')(module);
 require('dotenv').config();
 const http = require('http');
+
 const Data = require('../services/analytics/data');
 const Email = require('../services/analytics/email');
 
@@ -17,7 +18,7 @@ const server = http.createServer(async (request, response) => {
   }
 });
 
-server.listen(3000, err => {
+server.listen(3000, (err) => {
   if (err) throw new Error(err.message);
   console.log('Server is listening on http://localhost:3000');
 });
