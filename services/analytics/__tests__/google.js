@@ -1,10 +1,11 @@
-import dateFns from 'date-fns';
+import * as dateFns from 'date-fns';
+
 import * as Google from '../google';
 import { analyticsReport as analyticsReportMock } from '../analytics-report';
 
 jest.mock('../analytics-report.js');
 
-const format = date => dateFns.format(date, 'YYYY-MM-DD');
+const format = (date) => dateFns.format(date, 'yyyy-MM-dd');
 const dateRange = [
   {
     startDate: format(dateFns.subWeeks(new Date(), 1)),

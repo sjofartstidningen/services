@@ -1,12 +1,13 @@
 import winston from 'winston';
+
 import { isDevelopmentEnv, isTestEnv, getEnv } from './env';
 
 const payload = {};
-const lambda = winston.format(info => {
+const lambda = winston.format((info) => {
   return { ...info, ...payload };
 });
 
-const errorJson = winston.format(info => {
+const errorJson = winston.format((info) => {
   if (info.level === 'error' && info.error) {
     const { error } = info;
     info.error = { message: error.message || error.toString() };
@@ -33,7 +34,7 @@ function wrapHandler(handler) {
 }
 
 function logPromise(message) {
-  return res => {
+  return (res) => {
     const msg = typeof message === 'function' ? message(res) : message;
     logger.info(msg);
     return res;
@@ -41,7 +42,7 @@ function logPromise(message) {
 }
 
 function logException(message) {
-  return error => {
+  return (error) => {
     const msg = typeof message === 'function' ? message(error) : message;
     logger.error(msg, { error });
     return null;

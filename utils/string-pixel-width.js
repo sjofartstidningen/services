@@ -3,6 +3,7 @@
  * Helvetica included as that is the font I'm relying on right now
  */
 import deburr from 'lodash.deburr';
+
 import widthMap from './width-map.json';
 
 const defaultSettings = { size: 12 };

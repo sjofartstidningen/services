@@ -62,25 +62,3 @@ it('should minify output if minify is true in user config', () => {
 
   expect(result.html).toMatchSnapshot();
 });
-
-it('should keep comments if keepComments is true in user config', () => {
-  const result = Mjml.render(
-    `
-  <mlmj>
-    <mj-body>
-      <mj-section>
-        <mj-column>
-          <!-- A comment -->
-          <mj-text>
-            Hello World!
-          </mj-text>
-        </mj-column>
-      </mj-section>
-    </mj-body>
-  </mlmj>
-  `,
-    { keepComments: false },
-  );
-
-  expect(result.html).toMatchSnapshot();
-});
