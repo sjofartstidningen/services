@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.771.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "date-fns": "^2.16.1",
     "googleapis": "^40.0.0",
     "handlebars": "^4.7.6",
