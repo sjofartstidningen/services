@@ -27,7 +27,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "aws-sdk": "^2.771.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.20.0",
     "date-fns": "^2.16.1",
     "googleapis": "^40.0.0",
