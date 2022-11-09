@@ -25,7 +25,8 @@
     "deploy:analytics:staging": "serverless deploy function -f analytics -s staging",
     "docker:run": "docker run --env-file=.env sst-services /bin/bash -c",
     "predocker:run": "docker build -t sst-services .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "http-errors": "^2.0.0",
@@ -45,6 +46,7 @@
     "husky": "^8.0.2",
     "jest": "^29.3.1",
     "lint-staged": "^13.0.3",
+    "patch-package": "^6.5.0",
     "prettier": "^2.7.1",
     "serverless": "^2.72.3",
     "serverless-api-cloudfront": "^0.9.5",
