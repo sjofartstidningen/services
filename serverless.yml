@@ -1,18 +1,21 @@
 service: sjofartstidningen-services
-frameworkVersion: '2'
+frameworkVersion: '3'
 
-variablesResolutionMode: 20210326
-
+useDotenv: true
 plugins:
   - serverless-api-cloudfront
 
-useDotenv: true
+params:
+  default:
+    domain: ${sls:stage}.services.sjofartstidningen.se
+  production:
+    domain: services.sjofartstidningen.se
+
 provider:
   name: aws
   runtime: nodejs16.x
   stage: ${sls:stage}
   region: eu-north-1
-  lambdaHashingVersion: '20201221'
   apiGateway:
     apiKeys:
       - name: render-email-${sls:stage}
@@ -20,7 +23,7 @@ provider:
 
 custom:
   apiCloudFront:
-    domain: ${env:DOMAIN}
+    domain: ${param:domain}
     certificate: ${env:AWS_CERTIFICATE_ARN}
     compress: true
     cookies: none
