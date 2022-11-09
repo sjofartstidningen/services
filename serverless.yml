@@ -1,31 +1,29 @@
 service: sjofartstidningen-services
+frameworkVersion: '3'
 
+useDotenv: true
 plugins:
   - serverless-api-cloudfront
 
+params:
+  default:
+    domain: ${sls:stage}.services.sjofartstidningen.se
+  production:
+    domain: services.sjofartstidningen.se
+
 provider:
   name: aws
-  runtime: nodejs10.x
-  stage: ${opt:stage, self:custom.defaultStage}
-  region: ${opt:region, self:custom.defaultRegion}
-  apiKeys:
-    - name: render-email-${opt:stage}
-      description: 'Key to access render-email endpoint'
+  runtime: nodejs16.x
+  stage: ${sls:stage}
+  region: eu-north-1
+  apiGateway:
+    apiKeys:
+      - name: render-email-${sls:stage}
+        description: 'Key to access render-email endpoint'
 
 custom:
-  defaultStage: development
-  defaultRegion: eu-north-1
-
-  scheduleEnabled:
-    production: true
-    development: false
-
-  cloudFrontDomain:
-    production: services.sjofartstidningen.se
-    default: ${self:provider.stage}.services.sjofartstidningen.com
-
   apiCloudFront:
-    domain: ${self:custom.cloudFrontDomain.${self:provider.stage, 'default'}}
+    domain: ${param:domain}
     certificate: ${env:AWS_CERTIFICATE_ARN}
     compress: true
     cookies: none
@@ -40,33 +38,12 @@ package:
     - build/**
 
 functions:
-  analytics:
-    description: 'A weekly digest of useful analytics from Google and Mailchimp'
-    handler: build/analytics.send
-    timeout: 10
-    environment:
-      VERSION: '1.0.4'
-      NODE_ENV: ${self:provider.stage}
-      MAILCHIMP_DC: ${env:MAILCHIMP_DC}
-      MAILCHIMP_API_KEY: ${env:MAILCHIMP_API_KEY}
-      MAILCHIMP_LIST_ID: ${env:MAILCHIMP_LIST_ID}
-      GOOGLE_CLIENT_EMAIL: ${env:GOOGLE_CLIENT_EMAIL}
-      GOOGLE_PRIVATE_KEY: ${env:GOOGLE_PRIVATE_KEY}
-      GOOGLE_VIEW_ID: ${env:GOOGLE_VIEW_ID}
-      SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
-    events:
-      - schedule:
-          name: weekly-${self:provider.stage}
-          description: 'Every monday at 6 am (UTC)'
-          rate: cron(0 6 ? * MON *)
-          enabled: ${self:custom.scheduleEnabled.${self:provider.stage}}
-
   render-mail:
     description: 'Render provided mjml-string into html'
     handler: build/render-mail.render
     environment:
-      VERSION: '1.0.0'
-      NODE_ENV: ${self:provider.stage}
+      VERSION: '1.0.1'
+      NODE_ENV: ${sls:stage}
     events:
       - http:
           path: render-mail
