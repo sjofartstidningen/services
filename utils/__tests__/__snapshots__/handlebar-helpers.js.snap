@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`handlebarHelpers.capString should cut a string and append ellipsis based on length 1`] = `"The brown fox ju..."`;
-
-exports[`handlebarHelpers.capString should cut a string and append ellipsis based on length 2`] = `"..."`;

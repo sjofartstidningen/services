@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/render-result-naming-convention */
-import * as Mjml from '../mjml';
+import * as Mjml from './mjml';
 
 it('should render the mjml string and return an object with an html key', () => {
   const result = Mjml.render(
