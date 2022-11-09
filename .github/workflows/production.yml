@@ -25,9 +25,8 @@ jobs:
         run: npm run build
 
       - name: deploy staging
-        run: npx serverless deploy function -f render-email
+        run: npx serverless deploy function --function=render-email --stage=production
         env:
-          STAGE: production
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
