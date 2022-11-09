@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/render-result-naming-convention */
 import * as Mjml from '../mjml';
 
 it('should render the mjml string and return an object with an html key', () => {
@@ -40,25 +41,4 @@ it('should provide errors if there are any', () => {
   );
 
   expect(result.errors.length).toBeGreaterThan(0);
-});
-
-it('should minify output if minify is true in user config', () => {
-  const result = Mjml.render(
-    `
-  <mlmj>
-    <mj-body>
-      <mj-section>
-        <mj-column>
-          <mj-text>
-            Hello World!
-          </mj-text>
-        </mj-column>
-      </mj-section>
-    </mj-body>
-  </mlmj>
-  `,
-    { minify: true },
-  );
-
-  expect(result.html).toMatchSnapshot();
 });

@@ -23,7 +23,6 @@ async function construct(data) {
   logger.debug('Compiled Handlebars template');
 
   const { html } = mjml(mjmlTemplate, {
-    minify: true,
     validationLevel: 'strict',
   });
   logger.debug('Generated email body from mjml template');

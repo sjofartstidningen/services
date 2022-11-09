@@ -2,14 +2,11 @@ import { BadRequest } from 'http-errors';
 import mjml2html from 'mjml';
 import mjmlPkg from 'mjml/package.json';
 
-import { getEnv } from '../../utils/env';
-
 const render = (mjml, userConfig = {}) => {
   try {
     const config = {
       fonts: userConfig.fonts || {},
       keepComments: userConfig.keepComments || false,
-      minify: userConfig.minify || getEnv('NODE_ENV', false) !== 'development',
       validationLevel: userConfig.validationLevel || 'soft',
     };
 
