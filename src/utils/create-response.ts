@@ -1,4 +1,12 @@
+import type { APIGatewayProxyResult } from 'aws-lambda';
 import { InternalServerError } from 'http-errors';
+
+type ResponseConfig = {
+  statusCode?: number;
+  cache?: boolean;
+  contentType?: string;
+  headers?: Record<string, string>;
+};
 
 /**
  * createResponse will taken the intended body and create a proper response
@@ -17,12 +25,11 @@ import { InternalServerError } from 'http-errors';
  *
  * Note that you can override this (if you need some special Cache-Control
  * setting) by providing a Cache-Control in config.headers.
- *
- * @param {Body} body The intended body as a string, object (will be JSON) or a Buffer
- * @param {Config} [{ statusCode = 200, cache = true, contentType, headers }={}]
- * @returns {APIGatewayProxyResult}
  */
-const createResponse = (body, { statusCode = 200, cache = true, contentType, headers } = {}) => {
+export function createResponse(
+  body: unknown,
+  { statusCode = 200, cache = true, contentType, headers = {} }: ResponseConfig = {},
+): APIGatewayProxyResult {
   const isBuffer = Buffer.isBuffer(body);
   const isPlainText = typeof body === 'string';
 
@@ -38,15 +45,13 @@ const createResponse = (body, { statusCode = 200, cache = true, contentType, hea
   return {
     statusCode,
     headers: {
-      'Content-Type': contentType || (isPlainText ? 'text/plain' : 'application/json'),
+      'Content-Type': contentType ?? (isPlainText ? 'text/plain' : 'application/json'),
       'Cache-Control':
         typeof cache === 'number' ? `max-age=${cache}` : cache ? `max-age=${365 * 24 * 60 * 60}` : 'no-cache',
       'Last-Modified': new Date().toUTCString(),
-      ...(headers ? headers : null),
+      ...headers,
     },
     body: isBuffer ? body.toString('base64') : typeof body === 'string' ? body : JSON.stringify(body),
     isBase64Encoded: isBuffer,
   };
-};
-
-export { createResponse };
+}

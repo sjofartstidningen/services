@@ -9,7 +9,7 @@ const render = wrapHandler(async (event) => {
   logger.info(`Execution started in env: ${Env.env}`);
 
   try {
-    const body = JSON.parse(event.body);
+    const body = JSON.parse(event.body ?? '{}');
     if (body.mjml == null) {
       throw new BadRequest('Missing MJML string in json body');
     }
@@ -32,7 +32,7 @@ const render = wrapHandler(async (event) => {
     } else {
       statusCode = 500;
       message = 'Internal server error';
-      if (Env.getEnv('NODE_ENV') !== 'production') {
+      if (Env.getEnv('NODE_ENV') !== 'production' && error instanceof Error) {
         message += `: ${error.message}`;
       }
     }

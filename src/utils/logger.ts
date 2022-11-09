@@ -1,8 +1,9 @@
+import type { APIGatewayProxyHandlerV2 } from 'aws-lambda';
 import winston from 'winston';
 
-import { getEnv, isDevelopmentEnv, isTestEnv } from './env';
+import { env, getEnv } from './env';
 
-const payload = {};
+const payload: Record<string, any> = {};
 const lambda = winston.format((info) => {
   return { ...info, ...payload };
 });
@@ -16,14 +17,14 @@ const errorJson = winston.format((info) => {
   return info;
 });
 
-const logger = winston.createLogger({
-  level: isDevelopmentEnv ? 'debug' : 'info',
+export const logger = winston.createLogger({
+  level: env === 'development' ? 'debug' : 'info',
   transports: [new winston.transports.Console()],
-  silent: isTestEnv,
+  silent: env === 'test',
   format: winston.format.combine(lambda(), errorJson(), winston.format.json()),
 });
 
-function wrapHandler(handler) {
+export function wrapHandler(handler: APIGatewayProxyHandlerV2): APIGatewayProxyHandlerV2 {
   return (event, context, callback) => {
     if (event) payload.event = event;
     if (context) payload.awsRequestId = context.awsRequestId;
@@ -32,21 +33,3 @@ function wrapHandler(handler) {
     return handler(event, context, callback);
   };
 }
-
-function logPromise(message) {
-  return (res) => {
-    const msg = typeof message === 'function' ? message(res) : message;
-    logger.info(msg);
-    return res;
-  };
-}
-
-function logException(message) {
-  return (error) => {
-    const msg = typeof message === 'function' ? message(error) : message;
-    logger.error(msg, { error });
-    return null;
-  };
-}
-
-export { logger, wrapHandler, logPromise, logException };
