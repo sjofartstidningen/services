@@ -4,15 +4,10 @@ const environments = {
   test: 'test',
 };
 
-const getEnv = (
-  variableName,
-  throwOnNonExist = process.env.NODE_ENV !== environments.test,
-) => {
+const getEnv = (variableName, throwOnNonExist = process.env.NODE_ENV !== environments.test) => {
   const variable = process.env[variableName];
   if (variable == null && throwOnNonExist) {
-    throw new Error(
-      `Environment variable ${variableName} does not exist on process.env`,
-    );
+    throw new Error(`Environment variable ${variableName} does not exist on process.env`);
   }
 
   /**
@@ -22,13 +17,10 @@ const getEnv = (
    * which will contain new line chars.
    * @link https://github.com/googleapis/google-api-nodejs-client/issues/1110#issuecomment-436868760
    */
-  return typeof variable === 'string'
-    ? variable.replace(new RegExp('\\\\n', 'g'), '\n')
-    : variable;
+  return typeof variable === 'string' ? variable.replace(new RegExp('\\\\n', 'g'), '\n') : variable;
 };
 
-const validEnv =
-  getEnv('NODE_ENV') && Object.keys(environments).includes(getEnv('NODE_ENV'));
+const validEnv = getEnv('NODE_ENV') && Object.keys(environments).includes(getEnv('NODE_ENV'));
 
 const env = validEnv ? getEnv('NODE_ENV') : environments.development;
 

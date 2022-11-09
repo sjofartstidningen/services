@@ -1,9 +1,9 @@
 import { BadRequest, HttpError } from 'http-errors';
 
-import * as Env from '../../utils/env';
-import * as Mjml from './mjml';
-import { logger, wrapHandler } from '../../utils/logger';
 import { createResponse } from '../../utils/create-response';
+import * as Env from '../../utils/env';
+import { logger, wrapHandler } from '../../utils/logger';
+import * as Mjml from './mjml';
 
 const render = wrapHandler(async (event, context) => {
   logger.info(`Execution started in env: ${Env.env}`);

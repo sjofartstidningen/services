@@ -1,6 +1,6 @@
 import winston from 'winston';
 
-import { isDevelopmentEnv, isTestEnv, getEnv } from './env';
+import { getEnv, isDevelopmentEnv, isTestEnv } from './env';
 
 const payload = {};
 const lambda = winston.format((info) => {

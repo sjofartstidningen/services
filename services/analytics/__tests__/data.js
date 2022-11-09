@@ -1,7 +1,7 @@
 import axiosMock from 'axios';
 
-import { collect } from '../data';
 import { analyticsReport as analyticsReportMock } from '../analytics-report';
+import { collect } from '../data';
 
 jest.mock('axios');
 jest.mock('../analytics-report.js');

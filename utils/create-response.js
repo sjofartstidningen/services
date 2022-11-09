@@ -22,10 +22,7 @@ import { InternalServerError } from 'http-errors';
  * @param {Config} [{ statusCode = 200, cache = true, contentType, headers }={}]
  * @returns {APIGatewayProxyResult}
  */
-const createResponse = (
-  body,
-  { statusCode = 200, cache = true, contentType, headers } = {},
-) => {
+const createResponse = (body, { statusCode = 200, cache = true, contentType, headers } = {}) => {
   const isBuffer = Buffer.isBuffer(body);
   const isPlainText = typeof body === 'string';
 
@@ -35,30 +32,19 @@ const createResponse = (
    * string.
    */
   if (isBuffer && !contentType) {
-    throw new InternalServerError(
-      'If body is passed as a buffer a contentType must be passed',
-    );
+    throw new InternalServerError('If body is passed as a buffer a contentType must be passed');
   }
 
   return {
     statusCode,
     headers: {
-      'Content-Type':
-        contentType || (isPlainText ? 'text/plain' : 'application/json'),
+      'Content-Type': contentType || (isPlainText ? 'text/plain' : 'application/json'),
       'Cache-Control':
-        typeof cache === 'number'
-          ? `max-age=${cache}`
-          : cache
-          ? `max-age=${365 * 24 * 60 * 60}`
-          : 'no-cache',
+        typeof cache === 'number' ? `max-age=${cache}` : cache ? `max-age=${365 * 24 * 60 * 60}` : 'no-cache',
       'Last-Modified': new Date().toUTCString(),
       ...(headers ? headers : null),
     },
-    body: isBuffer
-      ? body.toString('base64')
-      : typeof body === 'string'
-      ? body
-      : JSON.stringify(body),
+    body: isBuffer ? body.toString('base64') : typeof body === 'string' ? body : JSON.stringify(body),
     isBase64Encoded: isBuffer,
   };
 };

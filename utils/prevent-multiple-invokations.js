@@ -2,7 +2,7 @@ import { get, put, update } from './dynamo-db';
 
 const TableName = process.env.TABLE_NAME;
 
-const getItem = id => get({ TableName, Key: { id } });
+const getItem = (id) => get({ TableName, Key: { id } });
 
 const createItem = (id, value) => put({ TableName, Item: { id, value } });
 
@@ -16,13 +16,8 @@ const updateItem = (id, newValue) =>
     ReturnValues: 'ALL_NEW',
   });
 
-function preventMultipleInvokations({
-  id,
-  evaluate,
-  create,
-  onPrevented = () => ({ prevented: true }),
-}) {
-  return handler => async (event, context, callback) => {
+function preventMultipleInvokations({ id, evaluate, create, onPrevented = () => ({ prevented: true }) }) {
+  return (handler) => async (event, context, callback) => {
     // Get the set value from the database
     const existingItem = await getItem(id).catch(() => null);
 

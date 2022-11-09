@@ -1,24 +1,20 @@
-import path from 'path';
+import axios from 'axios';
 import fs from 'fs';
-import { promisify } from 'util';
-
 import Handlebars from 'handlebars';
 import mjml from 'mjml';
-import axios from 'axios';
+import path from 'path';
+import { promisify } from 'util';
 
+import { getEnv } from '../../utils/env';
 import * as helpers from '../../utils/handlebars-helpers';
 import { logger } from '../../utils/logger';
-import { getEnv } from '../../utils/env';
 
 const readFile = promisify(fs.readFile);
 
 async function construct(data) {
   logger.info('Will generate email body from data provided');
 
-  const templatePath = path.join(
-    __dirname,
-    '../../static/email-templates/analytics.mjml',
-  );
+  const templatePath = path.join(__dirname, '../../static/email-templates/analytics.mjml');
   const templateSource = await readFile(templatePath, 'utf-8');
   logger.debug(`Read template source from ${templatePath}`);
 

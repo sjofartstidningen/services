@@ -1,7 +1,7 @@
 import * as dateFns from 'date-fns';
 
-import * as Google from '../google';
 import { analyticsReport as analyticsReportMock } from '../analytics-report';
+import * as Google from '../google';
 
 jest.mock('../analytics-report.js');
 
@@ -21,9 +21,7 @@ beforeEach(() => analyticsReportMock.mockReset());
 
 describe('Module: Google.getVisitsReport', () => {
   it('should get a visits report', async () => {
-    analyticsReportMock.mockResolvedValueOnce(
-      require('../../../test/mock-data/google-visits-report.json'),
-    );
+    analyticsReportMock.mockResolvedValueOnce(require('../../../test/mock-data/google-visits-report.json'));
 
     const result = await Google.getVisitsReport(dateRange);
 
@@ -44,9 +42,7 @@ describe('Module: Google.getVisitsReport', () => {
 
 describe('Module: Google.getViewsReport', () => {
   it('should get a list pages sorted by most views', async () => {
-    analyticsReportMock.mockResolvedValueOnce(
-      require('../../../test/mock-data/google-views-report.json'),
-    );
+    analyticsReportMock.mockResolvedValueOnce(require('../../../test/mock-data/google-views-report.json'));
 
     const filter = 'ga:pagePath!@/jobb/;ga:pagePath!=/;ga:pagePath!=/nyheter/';
     const result = await Google.getViewsReport(dateRange.slice(0, 1), filter);

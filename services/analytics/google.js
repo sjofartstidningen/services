@@ -2,18 +2,11 @@ import { analyticsReport } from './analytics-report';
 
 const extractVisitsData = (index, curr, prev) => ({
   total: Number.parseInt(curr.values[index], 10),
-  diff:
-    Number.parseInt(curr.values[index], 10) /
-      Number.parseInt(prev.values[index], 10) -
-    1,
+  diff: Number.parseInt(curr.values[index], 10) / Number.parseInt(prev.values[index], 10) - 1,
 });
 
 async function getVisitsReport(dateRanges) {
-  const metrics = [
-    { expression: 'ga:users' },
-    { expression: 'ga:sessions' },
-    { expression: 'ga:pageviews' },
-  ];
+  const metrics = [{ expression: 'ga:users' }, { expression: 'ga:sessions' }, { expression: 'ga:pageviews' }];
 
   const data = await analyticsReport({
     dateRanges,
@@ -50,11 +43,8 @@ async function getViewsReport(dateRanges, filtersExpression) {
   });
 
   const data = report.reports[0].data.rows;
-  return data.map(entry => ({
-    title: entry.dimensions[1]
-      .replace('Sjöfartstidningen', '')
-      .replace(/\|/g, '')
-      .trim(),
+  return data.map((entry) => ({
+    title: entry.dimensions[1].replace('Sjöfartstidningen', '').replace(/\|/g, '').trim(),
     url: `https://www.sjofartstidningen.se${entry.dimensions[0]}`,
     views: Number.parseInt(entry.metrics[0].values[0], 10),
   }));

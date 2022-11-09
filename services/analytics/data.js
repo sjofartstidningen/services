@@ -1,10 +1,10 @@
+import axios from 'axios';
 import * as dateFns from 'date-fns';
 import locale from 'date-fns/locale/sv';
-import axios from 'axios';
 
-import * as Google from './google';
-import { logger, logPromise, logException } from '../../utils/logger';
 import { getEnv } from '../../utils/env';
+import { logException, logPromise, logger } from '../../utils/logger';
+import * as Google from './google';
 
 const mailchimpBaseConfig = {
   baseURL: `https://${getEnv('MAILCHIMP_DC')}.api.mailchimp.com/3.0`,
@@ -26,13 +26,10 @@ async function collectMailchimpData({ start, end }) {
 
   const campaigns = await Promise.all(
     data.campaigns.map(async (campaign) => {
-      const { data: clickReport } = await axios.get(
-        `/reports/${campaign.id}/click-details`,
-        {
-          ...mailchimpBaseConfig,
-          params: { count: 50 },
-        },
-      );
+      const { data: clickReport } = await axios.get(`/reports/${campaign.id}/click-details`, {
+        ...mailchimpBaseConfig,
+        params: { count: 50 },
+      });
 
       return {
         title: campaign.settings.title,
@@ -79,20 +76,14 @@ async function collectGoogleData({ start, end }) {
   const viewsDateRanges = weekDateRanges.slice(0, 1);
 
   const [week, month, articles, jobs] = await Promise.all([
-    Google.getVisitsReport(weekDateRanges).then(
-      logPromise('Google week data fetched'),
+    Google.getVisitsReport(weekDateRanges).then(logPromise('Google week data fetched')),
+    Google.getVisitsReport(monthDateRanges).then(logPromise('Google month data fetched')),
+    Google.getViewsReport(viewsDateRanges, 'ga:pagePath!@/jobb/;ga:pagePath!=/;ga:pagePath!=/nyheter/').then(
+      logPromise('Google articles data fetched'),
     ),
-    Google.getVisitsReport(monthDateRanges).then(
-      logPromise('Google month data fetched'),
+    Google.getViewsReport(viewsDateRanges, 'ga:pagePath=@/jobb/;ga:pagePath!@/jobb-karriar/').then(
+      logPromise('Google jobs data fetched'),
     ),
-    Google.getViewsReport(
-      viewsDateRanges,
-      'ga:pagePath!@/jobb/;ga:pagePath!=/;ga:pagePath!=/nyheter/',
-    ).then(logPromise('Google articles data fetched')),
-    Google.getViewsReport(
-      viewsDateRanges,
-      'ga:pagePath=@/jobb/;ga:pagePath!@/jobb-karriar/',
-    ).then(logPromise('Google jobs data fetched')),
   ]);
 
   logger.info('Google data succesfully collected');
@@ -114,12 +105,8 @@ async function collect() {
   };
 
   const [mailchimp, google] = await Promise.all([
-    collectMailchimpData(period).catch(
-      logException('Failed fetching Mailchimp data'),
-    ),
-    collectGoogleData(period).catch(
-      logException('Failed fetching Google data'),
-    ),
+    collectMailchimpData(period).catch(logException('Failed fetching Mailchimp data')),
+    collectGoogleData(period).catch(logException('Failed fetching Google data')),
   ]);
 
   const data = {

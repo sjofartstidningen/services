@@ -15,10 +15,7 @@
       "data": {
         "rows": [
           {
-            "dimensions": [
-              "/kbv-ser-bemanningen/",
-              "Sjöfartstidningen | KBV ser över bemanningen |"
-            ],
+            "dimensions": ["/kbv-ser-bemanningen/", "Sjöfartstidningen | KBV ser över bemanningen |"],
             "metrics": [
               {
                 "values": ["1293"]
@@ -37,10 +34,7 @@
             ]
           },
           {
-            "dimensions": [
-              "/ater-aktuell-antarktis/",
-              "Sjöfartstidningen | Åter aktuell för Antarktis |"
-            ],
+            "dimensions": ["/ater-aktuell-antarktis/", "Sjöfartstidningen | Åter aktuell för Antarktis |"],
             "metrics": [
               {
                 "values": ["943"]
@@ -48,10 +42,7 @@
             ]
           },
           {
-            "dimensions": [
-              "/tyskt-klartecken-tunnelbygge/",
-              "Sjöfartstidningen | Tyskt klartecken för tunnelbygge |"
-            ],
+            "dimensions": ["/tyskt-klartecken-tunnelbygge/", "Sjöfartstidningen | Tyskt klartecken för tunnelbygge |"],
             "metrics": [
               {
                 "values": ["761"]

@@ -4,8 +4,7 @@ A set of serverless services for Sjöfartstidningen
 
 ## Deployment
 
-Make sure access and secret keys are defined in `.env` then run one of the
-following.
+Make sure access and secret keys are defined in `.env` then run one of the following.
 
 ```sh
 # Command when whole stack updated

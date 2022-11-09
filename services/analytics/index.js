@@ -1,8 +1,8 @@
+import analyticsConfig from '../../config/analytics.json';
 import * as Env from '../../utils/env';
+import { logger, wrapHandler } from '../../utils/logger';
 import * as Data from './data';
 import * as Email from './email';
-import analyticsConfig from '../../config/analytics.json';
-import { logger, wrapHandler } from '../../utils/logger';
 
 const config = analyticsConfig[Env.env] || analyticsConfig.development;
 

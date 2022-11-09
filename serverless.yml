@@ -1,13 +1,15 @@
 service: sjofartstidningen-services
+frameworkVersion: '2'
 
 plugins:
   - serverless-api-cloudfront
 
 provider:
   name: aws
-  runtime: nodejs10.x
+  runtime: nodejs16.x
   stage: ${opt:stage, self:custom.defaultStage}
   region: ${opt:region, self:custom.defaultRegion}
+  lambdaHashingVersion: '20201221'
   apiKeys:
     - name: render-email-${opt:stage}
       description: 'Key to access render-email endpoint'
@@ -15,10 +17,6 @@ provider:
 custom:
   defaultStage: development
   defaultRegion: eu-north-1
-
-  scheduleEnabled:
-    production: true
-    development: false
 
   cloudFrontDomain:
     production: services.sjofartstidningen.se
@@ -45,7 +43,7 @@ functions:
     handler: build/analytics.send
     timeout: 10
     environment:
-      VERSION: '1.0.4'
+      VERSION: '1.0.5'
       NODE_ENV: ${self:provider.stage}
       MAILCHIMP_DC: ${env:MAILCHIMP_DC}
       MAILCHIMP_API_KEY: ${env:MAILCHIMP_API_KEY}
@@ -59,13 +57,13 @@ functions:
           name: weekly-${self:provider.stage}
           description: 'Every monday at 6 am (UTC)'
           rate: cron(0 6 ? * MON *)
-          enabled: ${self:custom.scheduleEnabled.${self:provider.stage}}
+          enabled: false
 
   render-mail:
     description: 'Render provided mjml-string into html'
     handler: build/render-mail.render
     environment:
-      VERSION: '1.0.0'
+      VERSION: '1.0.1'
       NODE_ENV: ${self:provider.stage}
     events:
       - http:

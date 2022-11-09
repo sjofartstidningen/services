@@ -30,9 +30,7 @@ describe('handlebarHelpers.urlPath', () => {
     expect(helpers.urlPath('https://test.com')).toEqual('/');
     expect(helpers.urlPath('https://test.com/')).toEqual('/');
     expect(helpers.urlPath('https://test.com/path-part')).toEqual('/path-part');
-    expect(helpers.urlPath('https://test.com/path-part?search=part')).toEqual(
-      '/path-part?search=part',
-    );
+    expect(helpers.urlPath('https://test.com/path-part?search=part')).toEqual('/path-part?search=part');
   });
 });
 

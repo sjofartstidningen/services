@@ -8,12 +8,7 @@ const GOOGLE_CLIENT_EMAIL = getEnv('GOOGLE_CLIENT_EMAIL');
 const GOOGLE_PRIVATE_KEY = getEnv('GOOGLE_PRIVATE_KEY');
 const GOOGLE_VIEW_ID = getEnv('GOOGLE_VIEW_ID');
 
-const jwt = new google.auth.JWT(
-  GOOGLE_CLIENT_EMAIL,
-  null,
-  GOOGLE_PRIVATE_KEY,
-  scopes,
-);
+const jwt = new google.auth.JWT(GOOGLE_CLIENT_EMAIL, null, GOOGLE_PRIVATE_KEY, scopes);
 
 const authorize = jwt.authorize();
 
