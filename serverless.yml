@@ -44,6 +44,7 @@ functions:
     environment:
       VERSION: '1.0.1'
       NODE_ENV: ${sls:stage}
+      POWERTOOLS_SERVICE_NAME: render-mail
     events:
       - http:
           path: render-mail

@@ -1,45 +1,32 @@
-import { BadRequest, HttpError } from 'http-errors';
+import { Logger, injectLambdaContext } from '@aws-lambda-powertools/logger';
+import middy from '@middy/core';
+import { APIGatewayProxyResult } from 'aws-lambda';
+import { z } from 'zod';
 
-import { createResponse } from '../utils/create-response';
-import * as Env from '../utils/env';
-import { logger, wrapHandler } from '../utils/logger';
+import { errorResponseMiddleware, zodMiddleware } from '../utils/middleware';
 import * as Mjml from './mjml';
 
-const render = wrapHandler(async (event) => {
-  logger.info(`Execution started in env: ${Env.env}`);
+const logger = new Logger({ logLevel: process.env.NODE_ENV === 'development' ? 'DEBUG' : 'WARN' });
 
-  try {
-    const body = JSON.parse(event.body ?? '{}');
-    if (body.mjml == null) {
-      throw new BadRequest('Missing MJML string in json body');
-    }
-
-    if (typeof body.mjml !== 'string') {
-      throw new BadRequest('mjml key is not a string');
-    }
-
-    const result = Mjml.render(body.mjml, body.config);
-
-    logger.info(`Successfully rendered html from mjml string`);
-    return createResponse(result, { cache: false });
-  } catch (error) {
-    let statusCode;
-    let message;
-
-    if (error instanceof HttpError && error.expose) {
-      statusCode = error.statusCode;
-      message = error.message;
-    } else {
-      statusCode = 500;
-      message = 'Internal server error';
-      if (Env.getEnv('NODE_ENV') !== 'production' && error instanceof Error) {
-        message += `: ${error.message}`;
-      }
-    }
-
-    logger.error('Failure, error response', { error });
-    return createResponse(message, { statusCode, cache: false });
-  }
+const schema = z.object({
+  mjml: z
+    .string({ required_error: 'You must pass a string of mjml markup', invalid_type_error: 'mjml must be a string' })
+    .min(1, { message: 'You must pass a string of mjml markup' }),
+  config: z
+    .object({
+      fonts: z.record(z.string()).optional(),
+      validationLevel: z.enum(['strict', 'soft', 'skip']).optional(),
+    })
+    .optional(),
 });
 
-export { render };
+export const render = middy()
+  .use(injectLambdaContext(logger, { logEvent: true }))
+  .use(zodMiddleware(schema))
+  .use(errorResponseMiddleware(logger))
+  .handler(async (event): Promise<APIGatewayProxyResult> => {
+    const { body } = event;
+
+    const result = Mjml.render(body.mjml, body.config);
+    return { statusCode: 200, body: JSON.stringify(result) };
+  });
